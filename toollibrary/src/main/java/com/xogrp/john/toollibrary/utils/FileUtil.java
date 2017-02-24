@@ -2,6 +2,7 @@ package com.xogrp.john.toollibrary.utils;
 
 import android.content.Context;
 import android.net.Uri;
+import android.os.Environment;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -15,6 +16,32 @@ import java.io.InputStream;
  */
 
 public class FileUtil {
+
+    private static final String TAKE_COUPLE_PHOTO_TEMP_PATH = "/take_couple_photo_temp.jpg";
+    private static final String SELECT_COUPLE_PHOTO_TEMP_PATH = "/select_couple_photo_temp.jpg";
+
+    private static final String COUPLE_PHOTO_TEMP_PATH = "/couple_photo_temp.jpg";
+    private static final String COUPLE_PHOTO_TEMP_CROP_PATH = "/couple_photo_temp_crop.jpg";
+
+    public static File getPlannerProjectAbsolutePathFile(){
+        File dir = new File(String.format("%s/%s", Environment.getExternalStorageDirectory().getAbsolutePath(), "xogrp"));
+        if(!dir.exists()){
+            dir.mkdir();
+        }
+        return dir;
+    }
+
+    public static File getTakeCouplePhotoTempPathFile(){
+        return new File(String.format("%s/%s", getPlannerProjectAbsolutePathFile(), TAKE_COUPLE_PHOTO_TEMP_PATH));
+    }
+
+    public static File getSelectCouplePhotoTempPathFile(){
+        return new File(String.format("%s/%s", getPlannerProjectAbsolutePathFile(), SELECT_COUPLE_PHOTO_TEMP_PATH));
+    }
+
+    public static File getCouplePhotoTempCropPathFile(){
+        return new File(String.format("%s/%s", getPlannerProjectAbsolutePathFile(), COUPLE_PHOTO_TEMP_CROP_PATH));
+    }
 
     /**
      * fixed the Google Photos App get permission issue
