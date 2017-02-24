@@ -8,6 +8,7 @@ buildscript {
         classpath 'com.android.tools.build:gradle:2.2.3'
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.1'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -16,6 +17,8 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+        mavenCentral()
+        maven { url "https://github.com/taplytics/Taplytics-Android-SDK/raw/master/AndroidStudio/" }
     }
 
 }
@@ -31,4 +34,5 @@ ext {
     androidCompileSdkVersion = 23
     robotiumVersion = '5.0.1'
     supportLibraryVersion = '24.0.0'
+    playServicesVersion = '10.0.1'
 }

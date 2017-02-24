@@ -15,3 +15,14 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+
+-optimizationpasses 5
+#-dontpreverify
+#-dontobfuscate
+-dontwarn javax.management.**
+-dontwarn java.lang.management.**
+-dontwarn android.net.**
+-dontwarn org.apache.**
+-dontwarn org.apache.**
+#-dontwarn twitter4j.management.**
+#-dontwarn com.parse.ParseApacheHttpClient
