@@ -1,1 +1,1 @@
-include ':app', ':toollibrary', ':testjavacode'
+include ':app', ':toollibrary', ':testjavacode', ':music'
