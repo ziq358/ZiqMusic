@@ -20,7 +20,7 @@
 
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
@@ -28,6 +28,13 @@
         app:itemBackground="@color/transparent"
         app:itemIconTint="@color/selector_nav_item_icon"
         app:itemTextColor="@color/selector_nav_item_text"
-        />
+        >
+        <FrameLayout
+            android:id="@+id/nav_view_footer"
+            android:layout_gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </android.support.design.widget.NavigationView>
+
 
 </com.xogrp.john.music.widget.MusicDrawerLayout>

@@ -9,7 +9,7 @@ import com.xogrp.john.music.R;
 public class HomeFragment extends AbstractMusicFragment {
 
 
-    private static final String FRAGMENT_TAG = "home_fragment";
+    private static final String FRAGMENT_TAG = "fragment_home";
 
     @Override
     public String getFragmentTag() {
@@ -18,7 +18,7 @@ public class HomeFragment extends AbstractMusicFragment {
 
     @Override
     protected int getRootLayout() {
-        return R.layout.home_fragment;
+        return R.layout.fragment_home;
     }
 
 }
