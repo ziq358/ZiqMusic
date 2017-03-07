@@ -11,7 +11,7 @@ import com.xogrp.john.music.controller.drawerLayout.DrawerLayoutController;
  * Created by john on 03/03/2017.
  */
 
-public abstract class DrawerLayoutMusicActivity extends AbstractMusicActivity {
+public abstract class DrawerLayoutMusicActivity extends AbstractMusicActivity implements DrawerLayoutController.LeftNavigator {
 
     DrawerLayoutController mDrawerLayoutController;
 
@@ -25,7 +25,7 @@ public abstract class DrawerLayoutMusicActivity extends AbstractMusicActivity {
 
     private void initView() {
         DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mDrawerLayoutController = new DrawerLayoutController(drawerLayout);
+        mDrawerLayoutController = new DrawerLayoutController(drawerLayout, this);
     }
 
     abstract void onDrawerLayoutCreate();
@@ -33,5 +33,10 @@ public abstract class DrawerLayoutMusicActivity extends AbstractMusicActivity {
     @Override
     public final int getContainer() {
         return R.id.fl_content;
+    }
+
+    @Override
+    public void gotoMyMessage() {
+
     }
 }

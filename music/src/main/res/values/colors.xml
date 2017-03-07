@@ -2,14 +2,14 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#CE3D3A</color>
+    <color name="colorAccent">#CE3D3E</color>
 
     <color name="white">#FFFFFFFF</color>
     <color name="left_nav_bg_gray">#F2F4F5</color>
     <color name="transparent">#00000000</color>
 
     <color name="c_nav_selected">#6CC6F0</color>
-    <color name="c_nav_icon_unselected">#CE3D3A</color>
+    <color name="c_nav_icon_unselected">#CE3D3E</color>
 
     <color name="c_nav_text_unselected">#1f1f1f</color>
 
