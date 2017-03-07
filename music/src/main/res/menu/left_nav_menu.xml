@@ -1,9 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:id="@+id/left_nav_group_one" android:checkableBehavior="single">
+    <group  android:checkableBehavior="single">
 
-        <item android:id="@+id/my_msg" android:icon="@mipmap/left_nav_my_message" android:title="@string/left_nav_my_message"/>
+        <item android:id="@+id/left_nav_my_msg"
+            android:icon="@mipmap/left_nav_my_message"
+            android:title="@string/left_nav_my_message"/>
+
+        <item android:id="@+id/left_nav_vip_center"
+            android:icon="@mipmap/left_nav_vip_center"
+            android:title="@string/left_nav_vip_center"/>
+
+        <item android:id="@+id/left_nav_shopping_mall"
+            android:icon="@mipmap/left_nav_shopping_mall"
+            android:title="@string/left_nav_shopping_mall"/>
+
+        <item android:id="@+id/left_nav_listen_online"
+            android:icon="@mipmap/left_nav_listen_online"
+            android:title="@string/left_nav_listen_online"/>
+
+        <item android:id="@+id/left_nav_listen_song"
+            android:icon="@mipmap/left_nav_hear_song_to_find"
+            android:title="@string/left_nav_listen_song"/>
+
+        <item android:id="@+id/left_nav_theme_skin"
+            android:icon="@mipmap/left_nav_theme_skin"
+            android:title="@string/left_nav_theme_skin"/>
+
+        <item android:id="@+id/left_nav_night_model"
+            android:icon="@mipmap/left_nav_night_model"
+            android:title="@string/left_nav_night_model"/>
+
+        <item android:id="@+id/left_nav_timer_to_stop"
+            android:icon="@mipmap/left_nav_timer_to_stop"
+            android:title="@string/left_nav_timer_to_stop"/>
+
+        <item android:id="@+id/left_nav_scan"
+            android:icon="@mipmap/left_nav_scan"
+            android:title="@string/left_nav_scan"/>
+
+        <item android:id="@+id/left_nav_my_cloud"
+            android:icon="@mipmap/left_nav_my_cloud"
+            android:title="@string/left_nav_my_cloud"/>
+
+        <item android:id="@+id/left_nav_music_alarm_clock"
+            android:icon="@mipmap/left_nav_alarm_clock"
+            android:title="@string/left_nav_music_alarm_clock"/>
+
+        <item android:id="@+id/left_nav_drive_model"
+            android:icon="@mipmap/left_nav_drive_model"
+            android:title="@string/left_nav_drive_model"/>
+
+        <item
+            android:icon="@null"
+            android:title="@null"/>
 
     </group>
 </menu>

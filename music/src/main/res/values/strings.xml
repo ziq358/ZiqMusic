@@ -1,4 +1,17 @@
 <resources>
     <string name="app_name">ziq music</string>
-    <string name="left_nav_my_message">Message</string>
+    <string name="left_nav_my_message">我的信息</string>
+    <string name="left_nav_vip_center">会员中心</string>
+    <string name="left_nav_shopping_mall">商城</string>
+    <string name="left_nav_listen_online">在线听歌免流量</string>
+    <string name="left_nav_listen_song">听歌识曲</string>
+    <string name="left_nav_theme_skin">主题皮肤</string>
+    <string name="left_nav_night_model">夜间模式</string>
+    <string name="left_nav_timer_to_stop">定时停止播放</string>
+    <string name="left_nav_scan">扫一扫</string>
+    <string name="left_nav_my_cloud">我的音乐云盘</string>
+    <string name="left_nav_music_alarm_clock">音乐闹钟</string>
+    <string name="left_nav_drive_model">驾驶模式</string>
+    <string name="left_nav_footer_exit_app">退出应用</string>
+    <string name="left_nav_footer_setting">设置</string>
 </resources>
