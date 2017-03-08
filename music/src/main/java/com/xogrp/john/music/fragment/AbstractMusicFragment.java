@@ -39,14 +39,6 @@ public abstract class AbstractMusicFragment extends Fragment implements ChildFra
         mChildFragmentManager = getChildFragmentManager();
     }
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(getRootLayout(), container, false);
-    }
-
-    protected abstract int getRootLayout();
-
     public FragmentNavigator getActivityFragmentNavigator(){
         return mFragmentNavigator;
     }
