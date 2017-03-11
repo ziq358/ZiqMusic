@@ -34,6 +34,13 @@ public abstract class BaseMusicFragment extends AbstractMusicFragment {
 
     private void initToolbar(Toolbar toolbar){
         toolbar.setTitle(getTitle());
+        toolbar.setNavigationIcon(R.mipmap.ic_hamberger);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 
     protected String getTitle(){
