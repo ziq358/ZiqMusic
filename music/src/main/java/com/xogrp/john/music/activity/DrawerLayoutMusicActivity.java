@@ -6,12 +6,13 @@ import android.support.v4.widget.DrawerLayout;
 
 import com.xogrp.john.music.R;
 import com.xogrp.john.music.controller.drawerLayout.DrawerLayoutController;
+import com.xogrp.john.music.listener.Drawer;
 
 /**
  * Created by john on 03/03/2017.
  */
 
-public abstract class DrawerLayoutMusicActivity extends AbstractMusicActivity implements DrawerLayoutController.LeftNavigator {
+public abstract class DrawerLayoutMusicActivity extends AbstractMusicActivity implements DrawerLayoutController.LeftNavigator, Drawer {
 
     DrawerLayoutController mDrawerLayoutController;
 
@@ -38,5 +39,15 @@ public abstract class DrawerLayoutMusicActivity extends AbstractMusicActivity im
     @Override
     public void gotoMyMessage() {
 
+    }
+
+    @Override
+    public void openDrawer() {
+        mDrawerLayoutController.openDrawer();
+    }
+
+    @Override
+    public void closeDrawer() {
+        mDrawerLayoutController.closeDrawer();
     }
 }

@@ -2,6 +2,7 @@ package com.xogrp.john.music.controller.drawerLayout;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.view.MenuItem;
 
@@ -66,5 +67,13 @@ public class DrawerLayoutController implements NavigationView.OnNavigationItemSe
         void gotoMyMessage();
     }
 
+
+    public void openDrawer(){
+        mDrawerLayout.openDrawer(GravityCompat.START);
+    }
+
+    public void closeDrawer(){
+        mDrawerLayout.closeDrawer(GravityCompat.START);
+    }
 
 }
