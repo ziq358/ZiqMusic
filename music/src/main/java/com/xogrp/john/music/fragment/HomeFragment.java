@@ -6,6 +6,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.xogrp.john.music.R;
 import com.xogrp.john.music.controller.HomeTabController;
@@ -14,7 +15,7 @@ import com.xogrp.john.music.controller.HomeTabController;
  * Created by john on 03/03/2017.
  */
 
-public class HomeFragment extends BaseMusicFragment {
+public class HomeFragment extends BaseMusicFragment implements HomeTabController.HomeTabListener {
 
 
     private static final String FRAGMENT_TAG = "fragment_home";
@@ -35,6 +36,21 @@ public class HomeFragment extends BaseMusicFragment {
         Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
         initToolbar(toolbar);
         HomeTabController tabHostController = new HomeTabController(view);
+        tabHostController.setHomeTabListener(this);
+    }
 
+    @Override
+    public void onDiscoverTab() {
+        Toast.makeText(getContext(), "discover", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onMusicTab() {
+        Toast.makeText(getContext(), "music", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onFriendsTab() {
+        Toast.makeText(getContext(), "friends", Toast.LENGTH_SHORT).show();
     }
 }

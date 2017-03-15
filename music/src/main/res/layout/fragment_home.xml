@@ -13,8 +13,16 @@
             >
             <HorizontalScrollView
                 android:id="@+id/sv_tab"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="?attr/actionBarSize">
+                <LinearLayout
+                    android:id="@+id/sv_ll_tab"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="25dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                </LinearLayout>
             </HorizontalScrollView>
         </android.support.v7.widget.Toolbar>
         <android.support.v4.view.ViewPager
