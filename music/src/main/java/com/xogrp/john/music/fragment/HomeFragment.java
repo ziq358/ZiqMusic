@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.xogrp.john.music.R;
+import com.xogrp.john.music.controller.HomeTabController;
 
 /**
  * Created by john on 03/03/2017.
@@ -33,5 +34,7 @@ public class HomeFragment extends BaseMusicFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
         initToolbar(toolbar);
+        HomeTabController tabHostController = new HomeTabController(view);
+
     }
 }

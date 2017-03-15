@@ -4,9 +4,6 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TabHost
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
@@ -14,28 +11,18 @@
             android:background="@color/colorAccent"
             android:layout_gravity="top"
             >
-            <TabWidget
-                android:id="@android:id/tabs"
+            <HorizontalScrollView
+                android:id="@+id/sv_tab"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:divider="@null"
-                android:background="@color/white"
-                >
-            </TabWidget>
+                android:layout_height="?attr/actionBarSize">
+            </HorizontalScrollView>
         </android.support.v7.widget.Toolbar>
-
-        <FrameLayout
-            android:id="@android:id/tabcontent"
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vp_content"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="?attr/actionBarSize"
             >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/app_name"
-                />
-        </FrameLayout>
+        </android.support.v4.view.ViewPager>
 
-    </TabHost>
 </android.support.design.widget.CoordinatorLayout>
