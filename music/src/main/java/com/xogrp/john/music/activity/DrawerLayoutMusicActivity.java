@@ -1,11 +1,16 @@
 package com.xogrp.john.music.activity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
+import android.util.AttributeSet;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.xogrp.john.music.R;
 import com.xogrp.john.music.controller.drawerLayout.DrawerLayoutController;
+import com.xogrp.john.music.controller.musicPlayer.MusicPlayerController;
 import com.xogrp.john.music.listener.Drawer;
 
 /**
@@ -15,21 +20,23 @@ import com.xogrp.john.music.listener.Drawer;
 public abstract class DrawerLayoutMusicActivity extends AbstractMusicActivity implements DrawerLayoutController.LeftNavigator, Drawer {
 
     DrawerLayoutController mDrawerLayoutController;
+    MusicPlayerController musicPlayerController;
 
     @Override
     protected final void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawer_layout);
-        initView();
-        onDrawerLayoutCreate();
+        initDrawerLayoutView();
+        onMusicCreate();
     }
 
-    private void initView() {
+    private void initDrawerLayoutView() {
         DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerLayoutController = new DrawerLayoutController(drawerLayout, this);
+        musicPlayerController = new MusicPlayerController((ViewGroup) findViewById(R.id.fl_bottom_player));
     }
 
-    abstract void onDrawerLayoutCreate();
+    abstract void onMusicCreate();
 
     @Override
     public final int getContainer() {

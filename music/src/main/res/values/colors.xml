@@ -2,15 +2,19 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#CE3D3E</color>
+    <color name="colorAccent">#C73536</color>
 
     <color name="white">#FFFFFFFF</color>
+    <color name="white_transparency">#85FFFFFF</color>
     <color name="left_nav_bg_gray">#F2F4F5</color>
     <color name="transparent">#00000000</color>
 
     <color name="c_nav_selected">#6CC6F0</color>
-    <color name="c_nav_icon_unselected">#CE3D3E</color>
+    <color name="c_nav_icon_unselected">#C73536</color>
 
     <color name="c_nav_text_unselected">#1f1f1f</color>
+
+    <color name="c_home_tab_icon_not_select" >#DB7273</color>
+    <color name="c_home_tab_icon_select" >#FFFFFFFF</color>
 
 </resources>

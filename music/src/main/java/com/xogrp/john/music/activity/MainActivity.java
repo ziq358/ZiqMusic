@@ -1,14 +1,11 @@
 package com.xogrp.john.music.activity;
 
-import android.os.Bundle;
-
-import com.xogrp.john.music.R;
-import com.xogrp.john.music.fragment.HomeFragment;
+import com.xogrp.john.music.fragment.home.HomeFragment;
 
 public class MainActivity extends DrawerLayoutMusicActivity {
 
     @Override
-    void onDrawerLayoutCreate() {
+    void onMusicCreate() {
         addFragment(new HomeFragment());
     }
 }

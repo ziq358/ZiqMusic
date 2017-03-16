@@ -62,4 +62,16 @@ public abstract class AbstractMusicActivity extends AppCompatActivity implements
     public void onActivityFinished(){
         finish();
     }
+
+
+    /**
+     *
+     * bottom player
+     * */
+
+    protected boolean isBottomPlayerShow(){
+        return false;
+    }
+
+
 }
