@@ -1,12 +1,18 @@
 package com.xogrp.john.music.controller.drawerLayout;
 
+import android.content.ComponentName;
+import android.content.Intent;
+import android.content.ServiceConnection;
+import android.os.IBinder;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.xogrp.john.music.R;
+import com.xogrp.john.music.service.MusicPlayService;
 
 /**
  * Created by john on 06/03/2017.
@@ -29,18 +35,47 @@ public class DrawerLayoutController implements NavigationView.OnNavigationItemSe
         this.mNavigationView.setNavigationItemSelectedListener(this);
     }
 
+    int count;
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
+        Intent intent;
         switch(item.getItemId()){
             case R.id.left_nav_my_msg:
                 mLeftNavigator.gotoMyMessage();
+                intent = new Intent(mDrawerLayout.getContext(),MusicPlayService.class);
+                intent.putExtra("test"," "+ count++);
+                mDrawerLayout.getContext().startService(intent);
                 break;
             case R.id.left_nav_vip_center:
+                intent = new Intent(mDrawerLayout.getContext(),MusicPlayService.class);
+                mDrawerLayout.getContext().stopService(intent);
                 break;
             case R.id.left_nav_shopping_mall:
+                intent = new Intent(mDrawerLayout.getContext(),MusicPlayService.class);
+                mDrawerLayout.getContext().bindService(intent, new ServiceConnection() {
+                    @Override
+                    public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+                        Log.e("ziq", "bindService onServiceConnected: ");
+                    }
+
+                    @Override
+                    public void onServiceDisconnected(ComponentName componentName) {
+                        Log.e("ziq", "bindService onServiceDisconnected: ");
+                    }
+                }, 0);
                 break;
             case R.id.left_nav_listen_online:
+                mDrawerLayout.getContext().unbindService(new ServiceConnection() {
+                    @Override
+                    public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+                        Log.e("ziq", "unbindService onServiceConnected: ");
+                    }
+
+                    @Override
+                    public void onServiceDisconnected(ComponentName componentName) {
+                        Log.e("ziq", "unbindService onServiceDisconnected: ");
+                    }
+                });
                 break;
             case R.id.left_nav_listen_song:
                 break;

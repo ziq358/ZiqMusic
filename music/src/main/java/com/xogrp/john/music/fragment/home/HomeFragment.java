@@ -1,5 +1,6 @@
 package com.xogrp.john.music.fragment.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
@@ -13,6 +14,7 @@ import com.xogrp.john.music.R;
 import com.xogrp.john.music.controller.home.HomeTabController;
 import com.xogrp.john.music.controller.home.HomeViewPagerController;
 import com.xogrp.john.music.fragment.BaseMusicFragment;
+import com.xogrp.john.music.service.MusicPlayService;
 
 /**
  * Created by john on 03/03/2017.
