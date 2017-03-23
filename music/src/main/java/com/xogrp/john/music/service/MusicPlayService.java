@@ -2,6 +2,7 @@ package com.xogrp.john.music.service;
 
 import android.app.Service;
 import android.content.Intent;
+import android.os.Binder;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -14,6 +15,12 @@ public class MusicPlayService extends Service {
 
 
     private static final String TAG = "ziq";
+    private MyBinder mBinder = new MyBinder();
+    public class MyBinder extends Binder {
+        public MusicPlayService getService() {
+             return MusicPlayService.this;
+        }
+    }
 
     @Override
     public void onCreate() {
@@ -36,12 +43,20 @@ public class MusicPlayService extends Service {
     @Override
     public IBinder onBind(Intent intent) {
         Log.e(TAG, "onBind: ");
-        return null;
+        return mBinder;
     }
 
     @Override
     public void onDestroy() {
         Log.e(TAG, "onDestroy: ");
         super.onDestroy();
+    }
+    int count = 0;
+    public void countPlus(){
+        count++;
+    }
+
+    public int getCount() {
+        return count;
     }
 }

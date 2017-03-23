@@ -24,6 +24,37 @@ public class DrawerLayoutController implements NavigationView.OnNavigationItemSe
     private NavigationView mNavigationView;
     private DrawerLayoutContent mDrawerLayoutContent;
     private LeftNavigator mLeftNavigator;
+    private MusicPlayService.MyBinder mBinder;
+    private MusicPlayService mBindService;
+    private boolean mBound;
+
+    ServiceConnection serviceConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+            Log.e("ziq", "bindService onServiceConnected: ");
+            mBinder = (MusicPlayService.MyBinder) iBinder;
+            mBindService = mBinder.getService();
+            mBound = true;
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName componentName) {
+            Log.e("ziq", "bindService onServiceDisconnected: ");
+            mBound = false;
+        }
+    };
+
+    ServiceConnection serviceConnection2 = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+            Log.e("ziq", "bindService onServiceConnected: 222");
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName componentName) {
+            Log.e("ziq", "bindService onServiceDisconnected: 222");
+        }
+    };
 
     public DrawerLayoutController(DrawerLayout drawerLayout, LeftNavigator leftNavigator) {
         this.mDrawerLayout = drawerLayout;
@@ -52,34 +83,23 @@ public class DrawerLayoutController implements NavigationView.OnNavigationItemSe
                 break;
             case R.id.left_nav_shopping_mall:
                 intent = new Intent(mDrawerLayout.getContext(),MusicPlayService.class);
-                mDrawerLayout.getContext().bindService(intent, new ServiceConnection() {
-                    @Override
-                    public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
-                        Log.e("ziq", "bindService onServiceConnected: ");
-                    }
-
-                    @Override
-                    public void onServiceDisconnected(ComponentName componentName) {
-                        Log.e("ziq", "bindService onServiceDisconnected: ");
-                    }
-                }, 0);
+                mDrawerLayout.getContext().bindService(intent, serviceConnection, 0);
                 break;
             case R.id.left_nav_listen_online:
-                mDrawerLayout.getContext().unbindService(new ServiceConnection() {
-                    @Override
-                    public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
-                        Log.e("ziq", "unbindService onServiceConnected: ");
-                    }
-
-                    @Override
-                    public void onServiceDisconnected(ComponentName componentName) {
-                        Log.e("ziq", "unbindService onServiceDisconnected: ");
-                    }
-                });
+                if (mBound) {
+                    mDrawerLayout.getContext().unbindService(serviceConnection);
+                    mBound = false;
+                }
                 break;
             case R.id.left_nav_listen_song:
+                if(mBindService != null){
+                    mBindService.countPlus();
+                }
                 break;
             case R.id.left_nav_theme_skin:
+                if(mBindService != null){
+                    Log.e("ziq", "mBindService.getCount(): "+mBindService.getCount());
+                }
                 break;
             case R.id.left_nav_night_model:
                 break;
