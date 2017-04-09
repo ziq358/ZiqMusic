@@ -2,12 +2,13 @@ package com.xogrp.john.music.service;
 
 import android.app.Service;
 import android.content.Intent;
-import android.os.Binder;
-import android.os.Handler;
 import android.os.IBinder;
-import android.os.Message;
+import android.os.RemoteException;
 import android.support.annotation.Nullable;
 import android.util.Log;
+
+import java.lang.ref.WeakReference;
+import java.util.List;
 
 /**
  * Created by Administrator on 2017/3/22.
@@ -17,14 +18,8 @@ public class MusicPlayService extends Service {
 
 
     private static final String TAG = "ziq";
-    private MyBinder mBinder = new MyBinder();
-    public class MyBinder extends Binder {
-        public MusicPlayService getService() {
-             return MusicPlayService.this;
-        }
-    }
-
-    private Handler logHandler;
+    private IBinder mBinder = new MusicPlayBinder(this);
+    private List<MusicInfo> mMusicInfoList;
 
     @Override
     public void onCreate() {
@@ -32,30 +27,9 @@ public class MusicPlayService extends Service {
         Log.e(TAG, "onCreate: ");
     }
 
-    String test;
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        if(intent!= null && intent.hasExtra("test")){
-            test = intent.getStringExtra("test");
-            Log.e(TAG, "onStartCommand: test = "+ test);
-            Log.e(TAG, "onStartCommand: count = "+ count);
-        }else{
-            Log.e(TAG, "onStartCommand: count = "+ count);
-        }
-
-        if(logHandler == null){
-            logHandler = new Handler(new Handler.Callback() {
-                @Override
-                public boolean handleMessage(Message msg) {
-                    Log.e(TAG, "MusicPlayService handleMessage: "+msg.what +" test = "+test);
-                    if(!stop) logHandler.sendEmptyMessageDelayed(++count, 3000);
-                    return false;
-                }
-            });
-        }
-
-        logHandler.sendEmptyMessageDelayed(++count, 3000);
-
+        Log.e(TAG, "onStartCommand: ");
         return super.onStartCommand(intent, flags, startId);
     }
 
@@ -72,16 +46,59 @@ public class MusicPlayService extends Service {
         Log.e(TAG, "onDestroy: ");
         super.onDestroy();
     }
-    int count = 0;
-    public void countPlus(){
-        count++;
+
+    private static final class MusicPlayBinder extends MusicPlayServiceInterface.Stub{
+
+        private WeakReference<MusicPlayService> musicPlayServiceWeakReference;
+
+        public MusicPlayBinder(MusicPlayService service) {
+            musicPlayServiceWeakReference = new WeakReference<MusicPlayService>(service);
+        }
+
+        @Override
+        public void play() throws RemoteException {
+            MusicPlayService service = musicPlayServiceWeakReference.get();
+            if(service != null){
+                service.play();
+            }
+        }
+
+        @Override
+        public void stop() throws RemoteException {
+            MusicPlayService service = musicPlayServiceWeakReference.get();
+            if(service != null){
+                service.stop();
+            }
+        }
+
+        @Override
+        public void next() throws RemoteException {
+
+        }
+
+        @Override
+        public boolean isPlaying() throws RemoteException {
+            return false;
+        }
+
+        @Override
+        public void setMusicList(List<MusicInfo> musicList) throws RemoteException {
+            MusicPlayService service = musicPlayServiceWeakReference.get();
+            if(service != null){
+                service.setMusicInfoList(musicList);
+            }
+        }
     }
 
-    public int getCount() {
-        return count;
+    public void play(){
+        Log.e(TAG, "play: ");
     }
-    boolean stop = false;
-    public void stopLog(){
-        stop = true;
+
+    public void stop(){
+        Log.e(TAG, "stop: ");
+    }
+
+    public void setMusicInfoList(List<MusicInfo> musicInfoList) {
+        this.mMusicInfoList = musicInfoList;
     }
 }

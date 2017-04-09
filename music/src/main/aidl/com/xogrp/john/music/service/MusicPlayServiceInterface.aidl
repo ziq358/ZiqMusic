@@ -1,10 +1,11 @@
 package com.xogrp.john.music.service;
 
-/**
- * Created by Administrator on 2017/3/23.
- */
+import com.xogrp.john.music.service.MusicInfo;
 
 interface MusicPlayServiceInterface {
     void play();
     void stop();
+    void next();
+    boolean isPlaying();
+    void setMusicList(in List<MusicInfo> musicList);
 }

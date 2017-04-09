@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.xogrp.john.music">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    
     <application
         android:name="com.xogrp.john.music.MusicApplication"
         android:allowBackup="true"
@@ -17,7 +19,7 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".service.MusicPlayService">
+        <service android:name=".service.MusicPlayService" android:process=":music">
 
         </service>
 

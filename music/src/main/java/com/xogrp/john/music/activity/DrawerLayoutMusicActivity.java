@@ -2,9 +2,12 @@ package com.xogrp.john.music.activity;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -33,7 +36,17 @@ public abstract class DrawerLayoutMusicActivity extends AbstractMusicActivity im
     private void initDrawerLayoutView() {
         DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerLayoutController = new DrawerLayoutController(drawerLayout, this);
-        musicPlayerController = new MusicPlayerController((ViewGroup) findViewById(R.id.fl_bottom_player));
+        musicPlayerController = new MusicPlayerController((ViewGroup) findViewById(R.id.fl_bottom_player), this);
+    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        Log.e("ziq", "Activity onRequestPermissionsResult: ");
+        if(musicPlayerController != null){
+            musicPlayerController.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
     }
 
     abstract void onMusicCreate();
