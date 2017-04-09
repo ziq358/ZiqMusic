@@ -141,7 +141,7 @@ public class MusicPlayerController implements View.OnClickListener{
                     if(mServiceBinder != null){
                         try {
                             if(mServiceBinder.isPlaying()){
-                                mServiceBinder.stop();
+                                mServiceBinder.pause();
                             }else{
                                 mServiceBinder.play();
                             }

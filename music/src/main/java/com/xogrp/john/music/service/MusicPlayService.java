@@ -2,11 +2,15 @@ package com.xogrp.john.music.service;
 
 import android.app.Service;
 import android.content.Intent;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.IBinder;
 import android.os.RemoteException;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
+import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
@@ -19,7 +23,10 @@ public class MusicPlayService extends Service {
 
     private static final String TAG = "ziq";
     private IBinder mBinder = new MusicPlayBinder(this);
+    private int mCurrentSongPosition = -1;
     private List<MusicInfo> mMusicInfoList;
+    private MediaPlayer mMediaPlayer = new MediaPlayer();
+    private boolean isPause = false;
 
     @Override
     public void onCreate() {
@@ -63,6 +70,24 @@ public class MusicPlayService extends Service {
             }
         }
 
+
+
+        @Override
+        public void next() throws RemoteException {
+            MusicPlayService service = musicPlayServiceWeakReference.get();
+            if(service != null){
+                service.next();
+            }
+        }
+
+        @Override
+        public void pause() throws RemoteException {
+            MusicPlayService service = musicPlayServiceWeakReference.get();
+            if(service != null){
+                service.pause();
+            }
+        }
+
         @Override
         public void stop() throws RemoteException {
             MusicPlayService service = musicPlayServiceWeakReference.get();
@@ -72,12 +97,11 @@ public class MusicPlayService extends Service {
         }
 
         @Override
-        public void next() throws RemoteException {
-
-        }
-
-        @Override
         public boolean isPlaying() throws RemoteException {
+            MusicPlayService service = musicPlayServiceWeakReference.get();
+            if(service != null){
+                return service.isPlaying();
+            }
             return false;
         }
 
@@ -92,13 +116,75 @@ public class MusicPlayService extends Service {
 
     public void play(){
         Log.e(TAG, "play: ");
+        if(mMusicInfoList != null && mMusicInfoList.size() > 0 ){
+            if(mCurrentSongPosition == -1){
+                mCurrentSongPosition = 0;
+            }
+            if(isPause){
+                mMediaPlayer.start();
+                isPause = false;
+            }else{
+               playSong(mCurrentSongPosition);
+            }
+        }
+    }
+
+    public void next(){
+        if(mMusicInfoList != null){
+            int count = mMusicInfoList.size();
+            if(count > 0 && mCurrentSongPosition == count - 1){
+                mCurrentSongPosition = 0;
+            }else{
+                mCurrentSongPosition++;
+            }
+            playSong(mCurrentSongPosition);
+        }
+
+    }
+
+    private void playSong(int position){
+        if(mMediaPlayer != null){
+            try {
+                mMediaPlayer.reset();
+//               通过ContentResolver 查出来的数据，是content：//  用Uri才能正确找到地址播放
+//                Uri.parse(mMusicInfoList.get(position).data)
+                mMediaPlayer.setDataSource(getApplicationContext(), Uri.parse(mMusicInfoList.get(position).data));
+                mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+                // 通过异步的方式装载媒体资源
+                mMediaPlayer.prepareAsync();
+                mMediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                    @Override
+                    public void onPrepared(MediaPlayer mediaPlayer) {
+                        mMediaPlayer.start();
+                    }
+                });
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void pause(){
+        Log.e(TAG, "pause: ");
+        if(mMediaPlayer != null){
+            isPause = true;
+            mMediaPlayer.pause();
+        }
     }
 
     public void stop(){
         Log.e(TAG, "stop: ");
+        if(mMediaPlayer != null){
+            mMediaPlayer.stop();
+        }
+    }
+
+    public boolean isPlaying(){
+        return mMediaPlayer != null && mMediaPlayer.isPlaying();
     }
 
     public void setMusicInfoList(List<MusicInfo> musicInfoList) {
+        this.mCurrentSongPosition = -1;
         this.mMusicInfoList = musicInfoList;
     }
 }
