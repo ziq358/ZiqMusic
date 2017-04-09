@@ -1,20 +1,12 @@
 package com.xogrp.john.music.controller.drawerLayout;
 
-import android.content.ComponentName;
-import android.content.Intent;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import android.os.RemoteException;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.util.Log;
 import android.view.MenuItem;
 
 import com.xogrp.john.music.R;
-import com.xogrp.john.music.service.MusicPlayService;
-import com.xogrp.john.music.service.MusicPlayServiceInterface;
 
 /**
  * Created by john on 06/03/2017.

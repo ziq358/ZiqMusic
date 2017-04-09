@@ -33,7 +33,7 @@ dependencies {
 
     testCompile 'junit:junit:4.12'
 
-    compile "io.reactivex:rxjava:+"
+    compile "io.reactivex:rxjava:1.2.9"
 
 
 }
