@@ -14,4 +14,7 @@
     <string name="left_nav_drive_model">驾驶模式</string>
     <string name="left_nav_footer_exit_app">退出应用</string>
     <string name="left_nav_footer_setting">设置</string>
+    <string name="s_new_song">新曲</string>
+    <string name="s_song_list">歌单</string>
+    <string name="s_ranking_list">排行榜</string>
 </resources>

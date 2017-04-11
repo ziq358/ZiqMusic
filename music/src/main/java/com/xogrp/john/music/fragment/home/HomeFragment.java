@@ -45,9 +45,11 @@ public class HomeFragment extends BaseMusicFragment implements HomeTabController
         Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
         initToolbar(toolbar);
 
+        //在toolbar上的三个按钮，点击回调mViewPagerController， 使得ViewPager换页
         mTabHostController = new HomeTabController(view);
         mTabHostController.setHomeTabListener(this);
 
+        //对ViewPager进行操作。
         mViewPagerController = new HomeViewPagerController((ViewPager) view.findViewById(R.id.vp_content), getChildFragmentManager());
         mViewPagerController.addOnPageChangeListener(this);
         mViewPagerController.setCurrentItem(0, false);

@@ -1,4 +1,4 @@
-package com.xogrp.john.music.fragment.home;
+package com.xogrp.john.music.fragment.home.discover;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,9 +13,9 @@ import com.xogrp.john.music.fragment.BaseMusicFragment;
  * Created by john on 16/03/2017.
  */
 
-public class DiscoverFragment extends BaseMusicFragment {
+public class SongListFragment extends BaseMusicFragment {
 
-    public static final String FRAGMENT_TAG = "discover_fragment";
+    public static final String FRAGMENT_TAG = "friends_fragment";
 
     @Override
     public String getFragmentTag() {
@@ -25,6 +25,6 @@ public class DiscoverFragment extends BaseMusicFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_discover, container, false);
+        return inflater.inflate(R.layout.fragment_friends, container, false);
     }
 }

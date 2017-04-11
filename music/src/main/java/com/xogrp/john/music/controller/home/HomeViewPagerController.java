@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 
 import com.xogrp.john.music.fragment.BaseMusicFragment;
-import com.xogrp.john.music.fragment.home.DiscoverFragment;
+import com.xogrp.john.music.fragment.home.discover.DiscoverFragment;
 import com.xogrp.john.music.fragment.home.FriendsFragment;
 import com.xogrp.john.music.fragment.home.MusicFragment;
 
