@@ -15,7 +15,7 @@ import com.xogrp.john.music.fragment.BaseMusicFragment;
 
 public class NewSongFragment extends BaseMusicFragment {
 
-    public static final String FRAGMENT_TAG = "friends_fragment";
+    public static final String FRAGMENT_TAG = "new_song_fragment";
 
     @Override
     public String getFragmentTag() {
@@ -25,6 +25,6 @@ public class NewSongFragment extends BaseMusicFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_friends, container, false);
+        return inflater.inflate(R.layout.fragment_new_song, container, false);
     }
 }

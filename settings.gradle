@@ -1,1 +1,1 @@
-include ':app', ':toollibrary', ':testjavacode', ':music'
+include ':app', ':toollibrary', ':testjavacode', ':music', ':recycleviewrelatedlibrary'
