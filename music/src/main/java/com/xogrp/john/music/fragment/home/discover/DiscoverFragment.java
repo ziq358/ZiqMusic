@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +20,6 @@ import java.util.List;
 import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 /**
  * Created by john on 16/03/2017.
@@ -65,7 +63,7 @@ public class DiscoverFragment extends BaseMusicFragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         DiscoverFragmentViewPagerAdapter adapter = new DiscoverFragmentViewPagerAdapter(getChildFragmentManager());
-        adapter.addFragment(new NewSongFragment(), mNewSong);
+        adapter.addFragment(new RecommendFragment(), mNewSong);
         adapter.addFragment(new SongListFragment(), mSongList);
         adapter.addFragment(new RankingListFragment(), mRankingList);
         mViewPager.setAdapter(adapter);

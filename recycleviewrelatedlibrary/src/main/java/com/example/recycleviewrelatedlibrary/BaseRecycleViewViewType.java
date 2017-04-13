@@ -8,7 +8,7 @@ import android.view.ViewGroup;
  * Created by Administrator on 2017/4/12.
  */
 
-public abstract class BaseViewType {
+public abstract class BaseRecycleViewViewType {
 
     protected abstract boolean isMatchViewType(int position);
 
@@ -16,10 +16,10 @@ public abstract class BaseViewType {
 
     protected abstract int getLayoutRes();
 
-    public BaseViewHolder onCreateViewHolder(ViewGroup parent) {
+    public BaseRecycleViewViewHolder onCreateViewHolder(ViewGroup parent) {
         View view = LayoutInflater.from(parent.getContext()).inflate(getLayoutRes(), parent, false);
-        return new BaseViewHolder(view);
+        return new BaseRecycleViewViewHolder(view);
     }
 
-    protected abstract void onBindViewHolder(BaseViewHolder holder, int position);
+    protected abstract void onBindViewHolder(BaseRecycleViewViewHolder holder, int position);
 }

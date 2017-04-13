@@ -9,11 +9,11 @@ import android.view.ViewGroup;
  * Created by Administrator on 2017/4/12.
  */
 
-public class BaseViewHolder extends RecyclerView.ViewHolder {
+public class BaseRecycleViewViewHolder extends RecyclerView.ViewHolder {
 
     private SparseArray<View> viewSparseArray = new SparseArray<>();
 
-    public BaseViewHolder(View itemView) {
+    public BaseRecycleViewViewHolder(View itemView) {
         super(itemView);
         parseViews(this.itemView);
     }
