@@ -26,7 +26,7 @@ public abstract class BaseRecycleViewAdapter<T> extends RecyclerView.Adapter<Bas
         initViewType(mViewTypes);
     }
 
-    protected abstract void initViewType(List<BaseRecycleViewViewType> mViewTypes);
+    protected abstract void initViewType(List<BaseRecycleViewViewType> viewTypesList);
 
     public final Context getContext(){
         return mContext;
