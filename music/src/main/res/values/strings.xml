@@ -1,4 +1,6 @@
 <resources>
+
+    <!--侧边栏-->
     <string name="app_name">ziq music</string>
     <string name="left_nav_my_message">我的信息</string>
     <string name="left_nav_vip_center">会员中心</string>
@@ -17,4 +19,135 @@
     <string name="s_new_song">新曲</string>
     <string name="s_song_list">歌单</string>
     <string name="s_ranking_list">排行榜</string>
+
+
+    <!--个性推荐-->
+    <string name="s_recommend_1_1">「华语对唱」你不再是你，我还是我</string>
+    <string name="s_recommend_1_2">【华语爵士】值得珍藏的爵士佳作</string>
+    <string name="s_recommend_1_3">影响中国歌坛的外语原创</string>
+    <string name="s_recommend_1_4">【华语】感谢永远有歌，把心境道破</string>
+    <string name="s_recommend_1_5">年轻时不多经历一点老了拿什么下酒</string>
+    <string name="s_recommend_1_6">迎着不停摇摆的时间|不燥类摇滚</string>
+
+    <string name="s_recommend_2_1">超级面对面 第118期 许嵩：只与同好赏风雅</string>
+    <string name="s_recommend_2_2">古风歌手小曲儿数字专辑《十念》独家上线</string>
+    <string name="s_recommend_2_3">福利优选：3亿人的APP， 总有属于你的分贝</string>
+
+    <string name="s_recommend_3_1_name">One More Light</string>
+    <string name="s_recommend_3_1_singer">Linkin Park</string>
+    <string name="s_recommend_3_2_name">She\'s a Baby</string>
+    <string name="s_recommend_3_2_singer">Zico</string>
+    <string name="s_recommend_3_3_name">暧昧</string>
+    <string name="s_recommend_3_3_singer">薛之谦</string>
+    <string name="s_recommend_3_4_name">最佳人选</string>
+    <string name="s_recommend_3_4_singer">夏天Alex</string>
+    <string name="s_recommend_3_5_name">Moon and Back</string>
+    <string name="s_recommend_3_5_singer">曲婉婷</string>
+    <string name="s_recommend_3_6_name">当我找到你</string>
+    <string name="s_recommend_3_6_singer">徐佳莹</string>
+
+    <string name="s_recommend_4_1_name">LIKE ME</string>
+    <string name="s_recommend_4_1_singer">Jamm/BewhY</string>
+    <string name="s_recommend_4_2_name">渡月橘</string>
+    <string name="s_recommend_4_2_singer">仓木麻衣</string>
+    <string name="s_recommend_4_3_name">美人鱼</string>
+    <string name="s_recommend_4_3_singer">周杰伦</string>
+    <string name="s_recommend_4_4_name">非凡时代</string>
+    <string name="s_recommend_4_4_singer">南征北战</string>
+
+    <string name="s_recommend_5_1">管她是不是野百 期待匠人有春天</string>
+    <string name="s_recommend_5_2">音乐失乐园2</string>
+    <string name="s_recommend_5_3">小幸运 - 田馥甄 - Nancy cover吉他...</string>
+    <string name="s_recommend_5_4">最天使-小姨妈（频道现场录音）</string>
+    <string name="s_recommend_5_5">《好久不见，老朋友》 - 老地方</string>
+    <string name="s_recommend_5_6">全时间都听懂我说话，唯独你装聋作哑。。</string>
+
+    <!--歌单-->
+    <string name="s_song_list_1_2">华语//且听古装女星·吟唱如戏人生</string>
+    <string name="s_song_list_1_3">「电音」神级Remix版本背后的优质原作</string>
+    <string name="s_song_list_1_4">「无垠星海」破碎在脑海深处的星辰</string>
+    <string name="s_song_list_1_5">日系男毒 | 海风拂过脸庞的温柔</string>
+    <string name="s_song_list_1_6">「纯音」窥探无人音域，寡曲共赏</string>
+    <string name="s_song_list_1_7">华语|思念再轻，轻不过脉搏</string>
+    <string name="s_song_list_1_8">EDM Trap | 令人深陷的毒性低音</string>
+    <string name="s_song_list_1_9">[回忆]当初的那些歌，现在还能否触动你的心</string>
+    <string name="s_song_list_1_10">2017 Billboard音乐奖完整提名</string>
+    <string name="s_song_list_1_11">【日系】电子x萌音，无限洗脑循环模式开启</string>
+    <string name="s_song_list_1_12">「日系翻唱」惊艳双耳的国人翻唱！</string>
+    <string name="s_song_list_1_13">暗暗作祟|不甘朋友不敢恋人</string>
+    <string name="s_song_list_1_14">【华语】你曾是比风还潇洒的少年</string>
+    <string name="s_song_list_1_15">在春风沉醉的晚上跳曲迪斯科</string>
+    <string name="s_song_list_1_16">最佳电音|Remix|看混音拯救世界</string>
+    <string name="s_song_list_1_17">盘点各款萝莉[欧美电影插曲]</string>
+    <string name="s_song_list_1_18">每天都是欢乐的一天呢</string>
+    <string name="s_song_list_1_19">2017超级草莓·上海世博公园精选歌单</string>
+    <string name="s_song_list_1_20">2017年Coachella音乐节</string>
+    <string name="s_song_list_1_21">【纯音乐】梦幻于沉醉|心灵的渲染</string>
+    <string name="s_song_list_1_22">绵绵不绝的温柔，玄幻不止的女声</string>
+    <string name="s_song_list_1_23">【钢琴与歌声】那些钢琴伴奏的绝唱</string>
+    <string name="s_song_list_1_24">「港乐」香港音乐大师第二辑：黎小田作品集</string>
+    <string name="s_song_list_1_25">「古风」最值得单曲循环的古风歌曲合集</string>
+    <string name="s_song_list_1_26">时间治愈的是愿意自渡之人</string>
+    <string name="s_song_list_1_27">「纯音」四月，当钢琴遇上小提琴</string>
+    <string name="s_song_list_1_28">17年3月新热电音推送</string>
+    <string name="s_song_list_1_29">「二次元|电音」电音激荡二次元的呼唤</string>
+    <string name="s_song_list_1_30">【粤语】要有多坚强，才敢念念不忘</string>
+    <string name="s_song_list_1_31">周杰伦2017“地表最强”深圳站-歌单</string>
+
+    <!--主播电台-->
+    <string name="s_radio_1_1_title">四月，我想和你虚度时光</string>
+    <string name="s_radio_1_1_content">不管天气好坏，都有让人喜欢的东西</string>
+    <string name="s_radio_1_2_title">慢慢爱上你，慢慢忘记你</string>
+    <string name="s_radio_1_2_content">如果你终究要厉害请不要来爱</string>
+    <string name="s_radio_1_3_title">埃及神话故事7 蛇怪阿波非斯</string>
+    <string name="s_radio_1_3_content">逍遥散人和你说童话故事</string>
+    <string name="s_radio_1_4_title">马修（Matthew Macfadyen）- 《Pride and Pr..</string>
+    <string name="s_radio_1_4_content">马修朗诵的经典段落</string>
+
+
+    <string name="s_radio_2_1">冯提莫的个人电台</string>
+    <string name="s_radio_2_2">财经的娱乐解读</string>
+    <string name="s_radio_2_3">伴着男神的声音入眠</string>
+    <string name="s_radio_2_4">探险悬疑类巅峰之笔</string>
+    <string name="s_radio_2_5">一分钟地理学</string>
+    <string name="s_radio_2_6">听歌学英语</string>
+
+    <string name="s_radio_3_1">3D环绕，刺激每一个听神经</string>
+    <string name="s_radio_3_2">艳秋电台</string>
+    <string name="s_radio_3_3">李寺的不老歌</string>
+    <string name="s_radio_3_4">嘎电台</string>
+
+    <!--排行榜-->
+    <string name="s_ranking_1_1_1">1.Good Life - F-Eazy/Kehlani</string>
+    <string name="s_ranking_1_1_2">2.Go Off - Lil Uzi Vert/Quavo/Travis Scott</string>
+    <string name="s_ranking_1_1_3">3.Hey Ma(Spanish Version)- Pitbull/J Bal..</string>
+    <string name="s_ranking_1_2_1">1.暧昧 - 薛之谦</string>
+    <string name="s_ranking_1_2_2">2.动物世界 - 薛之谦</string>
+    <string name="s_ranking_1_2_3">3.我喜欢上你时的内心活动 - 陈琦贞</string>
+    <string name="s_ranking_1_3_1">1.不需声色 - Jam</string>
+    <string name="s_ranking_1_3_2">2.玩笑（Acoustic） - 刘瑞琦</string>
+    <string name="s_ranking_1_3_3">3.你拥抱我 - 浩子</string>
+    <string name="s_ranking_1_4_1">1.暧昧 - 薛之谦</string>
+    <string name="s_ranking_1_4_2">2.成都 - 赵雷</string>
+    <string name="s_ranking_1_4_3">3.刚好遇见你 - 李玉刚</string>
+    <string name="s_ranking_1_5_1">1.薛之谦</string>
+    <string name="s_ranking_1_5_2">2.周杰伦</string>
+    <string name="s_ranking_1_5_3">3.陈奕迅</string>
+
+    <string name="s_ranking_2_1_title">云音乐电音榜</string>
+    <string name="s_ranking_2_1_content">每周五更新</string>
+    <string name="s_ranking_2_2_title">云音乐ACG音乐榜</string>
+    <string name="s_ranking_2_2_content">每周四更新</string>
+    <string name="s_ranking_2_3_title">Beatport全球电子舞曲榜</string>
+    <string name="s_ranking_2_3_content">每周三更新</string>
+    <string name="s_ranking_2_4_title">日本Oricon周榜</string>
+    <string name="s_ranking_2_4_content">每周五更新</string>
+    <string name="s_ranking_2_5_title">UK排行榜周榜</string>
+    <string name="s_ranking_2_5_content">每周一更新</string>
+
+    <string name="s_ranking_3_1_title">音乐达人榜</string>
+    <string name="s_ranking_3_1_content">每周一更新</string>
+    <string name="s_ranking_3_2_title">音乐新人榜</string>
+    <string name="s_ranking_3_2_content">每周一更新</string>
+
 </resources>
