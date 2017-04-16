@@ -4,6 +4,8 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#C73536</color>
 
+    <color name="theme_color_primary">#d20000</color>
+
     <color name="white">#FFFFFFFF</color>
     <color name="white_transparency">#85FFFFFF</color>
     <color name="left_nav_bg_gray">#F2F4F5</color>
