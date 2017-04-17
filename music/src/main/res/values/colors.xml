@@ -18,5 +18,6 @@
 
     <color name="c_home_tab_icon_not_select" >#DB7273</color>
     <color name="c_home_tab_icon_select" >#FFFFFFFF</color>
+    <color name="c_recommend_bg">#F2F4F5</color>
 
 </resources>

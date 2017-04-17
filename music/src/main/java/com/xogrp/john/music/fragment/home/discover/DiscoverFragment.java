@@ -34,7 +34,7 @@ public class DiscoverFragment extends BaseMusicFragment {
     @BindView(R.id.discover_viewpager)
     ViewPager mViewPager;
 
-    @BindString(R.string.s_new_song)
+    @BindString(R.string.s_recommend)
     String mNewSong;
     @BindString(R.string.s_song_list)
     String mSongList;

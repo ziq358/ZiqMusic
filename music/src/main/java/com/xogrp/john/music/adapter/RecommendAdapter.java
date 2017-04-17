@@ -51,17 +51,21 @@ public class RecommendAdapter extends BaseRecycleViewAdapter<String> {
 
     @Override
     protected void initViewType(List<BaseRecycleViewViewType> viewTypesList) {
-        viewTypesList.add(new AutoRollViewType());
-        viewTypesList.add(new ThreeCircleViewType());
-        viewTypesList.add(new RecommendSongListViewType());
-        viewTypesList.add(new ExclusiveSendOutViewType());
-        viewTypesList.add(new NewestMusicViewType());
-        viewTypesList.add(new RecommendMvViewType());
-        viewTypesList.add(new RadioViewType());
-        viewTypesList.add(new AdjustOrderViewType());
+        viewTypesList.add(new AutoRollViewType(this));
+        viewTypesList.add(new ThreeCircleViewType(this));
+        viewTypesList.add(new RecommendSongListViewType(this));
+        viewTypesList.add(new ExclusiveSendOutViewType(this));
+        viewTypesList.add(new NewestMusicViewType(this));
+        viewTypesList.add(new RecommendMvViewType(this));
+        viewTypesList.add(new RadioViewType(this));
+        viewTypesList.add(new AdjustOrderViewType(this));
     }
 
     private class AutoRollViewType extends BaseRecycleViewViewType{
+
+        public AutoRollViewType(BaseRecycleViewAdapter adapter) {
+            super(adapter);
+        }
 
         @Override
         protected boolean isMatchViewType(int position) {
@@ -86,6 +90,10 @@ public class RecommendAdapter extends BaseRecycleViewAdapter<String> {
 
     private class ThreeCircleViewType extends BaseRecycleViewViewType{
 
+        public ThreeCircleViewType(BaseRecycleViewAdapter adapter) {
+            super(adapter);
+        }
+
         @Override
         protected boolean isMatchViewType(int position) {
             return position == getItemViewType();
@@ -108,6 +116,10 @@ public class RecommendAdapter extends BaseRecycleViewAdapter<String> {
     }
 
     private class RecommendSongListViewType extends BaseRecycleViewViewType{
+
+        public RecommendSongListViewType(BaseRecycleViewAdapter adapter) {
+            super(adapter);
+        }
 
         @Override
         protected boolean isMatchViewType(int position) {
@@ -132,6 +144,10 @@ public class RecommendAdapter extends BaseRecycleViewAdapter<String> {
 
     private class ExclusiveSendOutViewType extends BaseRecycleViewViewType{
 
+        public ExclusiveSendOutViewType(BaseRecycleViewAdapter adapter) {
+            super(adapter);
+        }
+
         @Override
         protected boolean isMatchViewType(int position) {
             return position == getItemViewType();
@@ -154,6 +170,10 @@ public class RecommendAdapter extends BaseRecycleViewAdapter<String> {
     }
 
     private class NewestMusicViewType extends BaseRecycleViewViewType{
+
+        public NewestMusicViewType(BaseRecycleViewAdapter adapter) {
+            super(adapter);
+        }
 
         @Override
         protected boolean isMatchViewType(int position) {
@@ -178,6 +198,10 @@ public class RecommendAdapter extends BaseRecycleViewAdapter<String> {
 
     private class RecommendMvViewType extends BaseRecycleViewViewType{
 
+        public RecommendMvViewType(BaseRecycleViewAdapter adapter) {
+            super(adapter);
+        }
+
         @Override
         protected boolean isMatchViewType(int position) {
             return position == getItemViewType();
@@ -201,6 +225,10 @@ public class RecommendAdapter extends BaseRecycleViewAdapter<String> {
 
     private class RadioViewType extends BaseRecycleViewViewType{
 
+        public RadioViewType(BaseRecycleViewAdapter adapter) {
+            super(adapter);
+        }
+
         @Override
         protected boolean isMatchViewType(int position) {
             return position == getItemViewType();
@@ -223,6 +251,10 @@ public class RecommendAdapter extends BaseRecycleViewAdapter<String> {
     }
 
     private class AdjustOrderViewType extends BaseRecycleViewViewType{
+
+        public AdjustOrderViewType(BaseRecycleViewAdapter adapter) {
+            super(adapter);
+        }
 
         @Override
         protected boolean isMatchViewType(int position) {

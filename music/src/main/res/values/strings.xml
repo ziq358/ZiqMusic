@@ -16,7 +16,7 @@
     <string name="left_nav_drive_model">驾驶模式</string>
     <string name="left_nav_footer_exit_app">退出应用</string>
     <string name="left_nav_footer_setting">设置</string>
-    <string name="s_new_song">新曲</string>
+    <string name="s_recommend">个性推荐</string>
     <string name="s_song_list">歌单</string>
     <string name="s_ranking_list">排行榜</string>
 
@@ -63,6 +63,7 @@
     <string name="s_recommend_5_6">全时间都听懂我说话，唯独你装聋作哑。。</string>
 
     <!--歌单-->
+    <string name="s_song_list_1_1">给你一剂抵挡四季抑郁的上好解药</string>
     <string name="s_song_list_1_2">华语//且听古装女星·吟唱如戏人生</string>
     <string name="s_song_list_1_3">「电音」神级Remix版本背后的优质原作</string>
     <string name="s_song_list_1_4">「无垠星海」破碎在脑海深处的星辰</string>
@@ -93,6 +94,7 @@
     <string name="s_song_list_1_29">「二次元|电音」电音激荡二次元的呼唤</string>
     <string name="s_song_list_1_30">【粤语】要有多坚强，才敢念念不忘</string>
     <string name="s_song_list_1_31">周杰伦2017“地表最强”深圳站-歌单</string>
+    <string name="s_song_list_load_more">努力加载中..</string>
 
     <!--主播电台-->
     <string name="s_radio_1_1_title">四月，我想和你虚度时光</string>

@@ -4,11 +4,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.lang.ref.WeakReference;
+
 /**
  * Created by Administrator on 2017/4/12.
  */
 
 public abstract class BaseRecycleViewViewType {
+    private WeakReference<BaseRecycleViewAdapter> adapterWeakReference;
+
+    public BaseRecycleViewViewType(BaseRecycleViewAdapter adapter) {
+        adapterWeakReference = new WeakReference<BaseRecycleViewAdapter>(adapter);
+    }
+
+    public BaseRecycleViewAdapter getAdapter() {
+        return adapterWeakReference.get();
+    }
 
     protected abstract boolean isMatchViewType(int position);
 
