@@ -1,6 +1,7 @@
 package com.xogrp.john.music.adapter;
 
 import android.content.Context;
+import android.widget.TextView;
 
 import com.example.recycleviewrelatedlibrary.BaseRecycleViewAdapter;
 import com.example.recycleviewrelatedlibrary.BaseRecycleViewViewHolder;
@@ -58,7 +59,9 @@ public class SongListAdapter extends BaseRecycleViewAdapter<SongListItemModel> {
 
         @Override
         protected void onBindViewHolder(BaseRecycleViewViewHolder holder, int position) {
-
+            TextView textView = holder.getView(R.id.content);
+            SongListItemModel model = (SongListItemModel) getAdapter().getItem(position);
+            textView.setText(model.songContent);
         }
     }
 
@@ -86,7 +89,9 @@ public class SongListAdapter extends BaseRecycleViewAdapter<SongListItemModel> {
 
         @Override
         protected void onBindViewHolder(BaseRecycleViewViewHolder holder, int position) {
-
+            TextView textView = holder.getView(R.id.content);
+            SongListItemModel model = (SongListItemModel) getAdapter().getItem(position);
+            textView.setText(model.songContent);
         }
     }
 
@@ -114,93 +119,10 @@ public class SongListAdapter extends BaseRecycleViewAdapter<SongListItemModel> {
 
         @Override
         protected void onBindViewHolder(BaseRecycleViewViewHolder holder, int position) {
-
+            TextView textView = holder.getView(R.id.content);
+            SongListItemModel model = (SongListItemModel) getAdapter().getItem(position);
+            textView.setText(model.songContent);
         }
     }
 
-    public void initDataOne(){
-        mDataList.add(new SongListItemModel(R.drawable.song_list_1_1, getContext().getString(R.string.s_song_list_1_1)));
-        mDataList.add(new SongListItemModel(R.drawable.song_list_1_1);
-        mDataList.add(new SongListItemModel(R.drawable.song_list_1_2);
-        mDataList.add(new SongListItemModel(R.drawable.song_list_1_3);
-        mDataList.add(new SongListItemModel(R.drawable.song_list_1_4);
-        mDataList.add(new SongListItemModel(R.drawable.song_list_1_5);
-        mDataList.add(new SongListItemModel(R.drawable.song_list_1_6);
-        mDataList.add(new SongListItemModel(R.drawable.song_list_1_7);
-        mDataList.add(new SongListItemModel(R.drawable.song_list_1_8);
-        mDataList.add(new SongListItemModel(R.drawable.song_list_1_9);
-        mDataList.add(new SongListItemModel(R.drawable.song_list_1_10);
-
-
-        mStringDataList.add(getContext().getString(R.string.s_song_list_1_1));
-        mStringDataList.add(getContext().getString(R.string.s_song_list_1_2));
-        mStringDataList.add(getContext().getString(R.string.s_song_list_1_3));
-        mStringDataList.add(getContext().getString(R.string.s_song_list_1_4));
-        mStringDataList.add(getContext().getString(R.string.s_song_list_1_5));
-        mStringDataList.add(getContext().getString(R.string.s_song_list_1_6));
-        mStringDataList.add(getContext().getString(R.string.s_song_list_1_7));
-        mStringDataList.add(getContext().getString(R.string.s_song_list_1_8));
-        mStringDataList.add(getContext().getString(R.string.s_song_list_1_9));
-        mStringDataList.add(getContext().getString(R.string.s_song_list_1_10));
-    }
-
-    public void initDataTwo(){
-        mIntDataList.add(R.drawable.song_list_1_11);
-        mIntDataList.add(R.drawable.song_list_1_12);
-        mIntDataList.add(R.drawable.song_list_1_13);
-        mIntDataList.add(R.drawable.song_list_1_14);
-        mIntDataList.add(R.drawable.song_list_1_15);
-        mIntDataList.add(R.drawable.song_list_1_16);
-        mIntDataList.add(R.drawable.song_list_1_17);
-        mIntDataList.add(R.drawable.song_list_1_18);
-        mIntDataList.add(R.drawable.song_list_1_19);
-        mIntDataList.add(R.drawable.song_list_1_20);
-
-        mStringDataList.add(getContext().getString(R.string.s_song_list_1_11));
-        mStringDataList.add(getContext().getString(R.string.s_song_list_1_12));
-        mStringDataList.add(getContext().getString(R.string.s_song_list_1_13));
-        mStringDataList.add(getContext().getString(R.string.s_song_list_1_14));
-        mStringDataList.add(getContext().getString(R.string.s_song_list_1_15));
-        mStringDataList.add(getContext().getString(R.string.s_song_list_1_16));
-        mStringDataList.add(getContext().getString(R.string.s_song_list_1_17));
-        mStringDataList.add(getContext().getString(R.string.s_song_list_1_18));
-        mStringDataList.add(getContext().getString(R.string.s_song_list_1_19));
-        mStringDataList.add(getContext().getString(R.string.s_song_list_1_20));
-    }
-
-    public void initDataThree(){
-        mIntDataList.add(R.drawable.song_list_1_21);
-        mIntDataList.add(R.drawable.song_list_1_22);
-        mIntDataList.add(R.drawable.song_list_1_23);
-        mIntDataList.add(R.drawable.song_list_1_24);
-        mIntDataList.add(R.drawable.song_list_1_25);
-        mIntDataList.add(R.drawable.song_list_1_26);
-        mIntDataList.add(R.drawable.song_list_1_27);
-        mIntDataList.add(R.drawable.song_list_1_28);
-        mIntDataList.add(R.drawable.song_list_1_29);
-        mIntDataList.add(R.drawable.song_list_1_30);
-        mIntDataList.add(R.drawable.song_list_1_31);
-
-        mStringDataList.add(getContext().getString(R.string.s_song_list_1_21));
-        mStringDataList.add(getContext().getString(R.string.s_song_list_1_22));
-        mStringDataList.add(getContext().getString(R.string.s_song_list_1_23));
-        mStringDataList.add(getContext().getString(R.string.s_song_list_1_24));
-        mStringDataList.add(getContext().getString(R.string.s_song_list_1_25));
-        mStringDataList.add(getContext().getString(R.string.s_song_list_1_26));
-        mStringDataList.add(getContext().getString(R.string.s_song_list_1_27));
-        mStringDataList.add(getContext().getString(R.string.s_song_list_1_28));
-        mStringDataList.add(getContext().getString(R.string.s_song_list_1_29));
-        mStringDataList.add(getContext().getString(R.string.s_song_list_1_30));
-        mStringDataList.add(getContext().getString(R.string.s_song_list_1_31));
-    }
-
-    private void removeLoadMoreItem(){
-        mIntDataList.remove(mIntDataList.size() - 1 );
-        mStringDataList.remove(mStringDataList.size() - 1 );
-    }
-
-    private void addLoadMoreItem(){
-        mIntDataList.add(R.drawable.icon_song_list_3);
-        mStringDataList.add(getContext().getString(R.string.s_song_list_load_more));
-    }
 }

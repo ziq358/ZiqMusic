@@ -47,6 +47,16 @@ public abstract class BaseRecycleViewAdapter<T> extends RecyclerView.Adapter<Bas
         notifyDataSetChanged();
     }
 
+    public void removeDataList(int index){
+        if(mData != null && mData.size() > index && index >= 0){
+            mData.remove(index);
+        }
+    }
+
+    public T getItem(int position){
+        return mData.get(position);
+    }
+
     @Override
     public int getItemViewType(int position) {
         for (BaseRecycleViewViewType type : mViewTypes) {
