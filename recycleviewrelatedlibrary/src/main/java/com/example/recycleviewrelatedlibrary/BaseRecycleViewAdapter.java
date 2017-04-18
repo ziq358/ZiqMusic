@@ -42,6 +42,10 @@ public abstract class BaseRecycleViewAdapter<T> extends RecyclerView.Adapter<Bas
         notifyDataSetChanged();
     }
 
+    public void addDataList(List<T> data){
+        mData.addAll(data);
+        notifyDataSetChanged();
+    }
 
     @Override
     public int getItemViewType(int position) {

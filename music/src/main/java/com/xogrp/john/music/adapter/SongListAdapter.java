@@ -6,6 +6,7 @@ import com.example.recycleviewrelatedlibrary.BaseRecycleViewAdapter;
 import com.example.recycleviewrelatedlibrary.BaseRecycleViewViewHolder;
 import com.example.recycleviewrelatedlibrary.BaseRecycleViewViewType;
 import com.xogrp.john.music.R;
+import com.xogrp.john.music.fragment.home.discover.MVP_Song_List.SongListItemModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,19 +15,17 @@ import java.util.List;
  * Created by john on 14/04/2017.
  */
 
-public class SongListAdapter extends BaseRecycleViewAdapter<Integer> {
+public class SongListAdapter extends BaseRecycleViewAdapter<SongListItemModel> {
 
     private final static int INT_ONE_ITEM_VIEW_TYPE = 0;
     private final static int INT_TWO_ITEM_VIEW_TYPE = 1;
     private final static int INT_LOAD_MORE_VIEW_TYPE = 2;
 
-    private List<Integer> mIntDataList = new ArrayList<>();
-    private List<String> mStringDataList = new ArrayList<>();
+    private List<SongListItemModel> mDataList = new ArrayList<>();
 
     public SongListAdapter(Context context) {
         super(context);
-        initDataOne();
-        setData(mIntDataList);
+        setData(mDataList);
     }
 
     @Override
@@ -120,16 +119,17 @@ public class SongListAdapter extends BaseRecycleViewAdapter<Integer> {
     }
 
     public void initDataOne(){
-        mIntDataList.add(R.drawable.song_list_1_1);
-        mIntDataList.add(R.drawable.song_list_1_2);
-        mIntDataList.add(R.drawable.song_list_1_3);
-        mIntDataList.add(R.drawable.song_list_1_4);
-        mIntDataList.add(R.drawable.song_list_1_5);
-        mIntDataList.add(R.drawable.song_list_1_6);
-        mIntDataList.add(R.drawable.song_list_1_7);
-        mIntDataList.add(R.drawable.song_list_1_8);
-        mIntDataList.add(R.drawable.song_list_1_9);
-        mIntDataList.add(R.drawable.song_list_1_10);
+        mDataList.add(new SongListItemModel(R.drawable.song_list_1_1, getContext().getString(R.string.s_song_list_1_1)));
+        mDataList.add(new SongListItemModel(R.drawable.song_list_1_1);
+        mDataList.add(new SongListItemModel(R.drawable.song_list_1_2);
+        mDataList.add(new SongListItemModel(R.drawable.song_list_1_3);
+        mDataList.add(new SongListItemModel(R.drawable.song_list_1_4);
+        mDataList.add(new SongListItemModel(R.drawable.song_list_1_5);
+        mDataList.add(new SongListItemModel(R.drawable.song_list_1_6);
+        mDataList.add(new SongListItemModel(R.drawable.song_list_1_7);
+        mDataList.add(new SongListItemModel(R.drawable.song_list_1_8);
+        mDataList.add(new SongListItemModel(R.drawable.song_list_1_9);
+        mDataList.add(new SongListItemModel(R.drawable.song_list_1_10);
 
 
         mStringDataList.add(getContext().getString(R.string.s_song_list_1_1));
@@ -194,9 +194,13 @@ public class SongListAdapter extends BaseRecycleViewAdapter<Integer> {
         mStringDataList.add(getContext().getString(R.string.s_song_list_1_31));
     }
 
+    private void removeLoadMoreItem(){
+        mIntDataList.remove(mIntDataList.size() - 1 );
+        mStringDataList.remove(mStringDataList.size() - 1 );
+    }
+
     private void addLoadMoreItem(){
         mIntDataList.add(R.drawable.icon_song_list_3);
-
         mStringDataList.add(getContext().getString(R.string.s_song_list_load_more));
     }
 }
