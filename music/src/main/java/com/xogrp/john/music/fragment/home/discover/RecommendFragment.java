@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +27,7 @@ public class RecommendFragment extends BaseMusicFragment {
     @BindView(R.id.rv_new_song)
     RecyclerView mRecyclerView;
 
+    RecommendAdapter adapter;
     @Override
     public String getFragmentTag() {
         return FRAGMENT_TAG;
@@ -41,11 +43,8 @@ public class RecommendFragment extends BaseMusicFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
-        RecommendAdapter adapter = new RecommendAdapter(getContext());
+        adapter = new RecommendAdapter(getContext());
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecyclerView.setAdapter(adapter);
     }
-
-
-
 }

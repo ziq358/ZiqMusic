@@ -1,6 +1,10 @@
 package com.xogrp.john.music.adapter;
 
 import android.content.Context;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.example.recycleviewrelatedlibrary.BaseRecycleViewAdapter;
 import com.example.recycleviewrelatedlibrary.BaseRecycleViewViewHolder;
@@ -25,10 +29,10 @@ public class RecommendAdapter extends BaseRecycleViewAdapter<String> {
     private final static String RADIO_VIEW_TYPE = "radio_view_type";
     private final static String ADJUST_ORDER_VIEW_TYPE = "adjust_order_view_type";
 
-    private final static int INT_AUTO_ROLL_VIEW_TYPE = 0;
+    private final static int INT_AUTO_ROLL_VIEW_TYPE = 3;
     private final static int INT_THREE_CIRCLE_VIEW_TYPE = 1;
     private final static int INT_RECOMMEND_SONG_LIST_VIEW_TYPE = 2;
-    private final static int INT_EXCLUSIVE_SEND_OUT_VIEW_TYPE = 3;
+    private final static int INT_EXCLUSIVE_SEND_OUT_VIEW_TYPE = 0;
     private final static int INT_NEWEST_MUSIC_VIEW_TYPE = 4;
     private final static int INT_RECOMMEND_MV_VIEW_TYPE = 5;
     private final static int INT_RADIO_VIEW_TYPE = 6;
@@ -83,8 +87,16 @@ public class RecommendAdapter extends BaseRecycleViewAdapter<String> {
         }
 
         @Override
-        protected void onBindViewHolder(BaseRecycleViewViewHolder holder, int position) {
+        public BaseRecycleViewViewHolder onCreateViewHolder(ViewGroup parent) {
+            Log.e("ziq", "AutoRollViewType onCreateViewHolder: ");
+            BaseRecycleViewViewHolder holder = super.onCreateViewHolder(parent);
+            RecyclerView recyclerView =
+            return holder;
+        }
 
+        @Override
+        protected void onBindViewHolder(BaseRecycleViewViewHolder holder, int position) {
+            Log.e("ziq", "AutoRollViewType onBindViewHolder: ");
         }
     }
 
@@ -112,6 +124,13 @@ public class RecommendAdapter extends BaseRecycleViewAdapter<String> {
         @Override
         protected void onBindViewHolder(BaseRecycleViewViewHolder holder, int position) {
 
+            holder.getView(R.id.private_fm).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.e("ziq", "onClick: ");
+                    getAdapter().notifyDataSetChanged();
+                }
+            });
         }
     }
 
@@ -164,8 +183,14 @@ public class RecommendAdapter extends BaseRecycleViewAdapter<String> {
         }
 
         @Override
-        protected void onBindViewHolder(BaseRecycleViewViewHolder holder, int position) {
+        public BaseRecycleViewViewHolder onCreateViewHolder(ViewGroup parent) {
+            Log.e("ziq", "ExclusiveSendOutViewType onCreateViewHolder: ");
+            return super.onCreateViewHolder(parent);
+        }
 
+        @Override
+        protected void onBindViewHolder(BaseRecycleViewViewHolder holder, int position) {
+            Log.e("ziq", "ExclusiveSendOutViewType: onBindViewHolder");
         }
     }
 
