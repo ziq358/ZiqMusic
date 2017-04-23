@@ -1,6 +1,10 @@
 package com.xogrp.john.music.adapter;
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.view.ViewCompat;
+import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.recycleviewrelatedlibrary.BaseRecycleViewAdapter;
@@ -18,12 +22,12 @@ import java.util.List;
 
 public class SongListAdapter extends BaseRecycleViewAdapter<SongListItemModel> {
 
-    private final static int INT_ONE_ITEM_VIEW_TYPE = 0;
+    public final static int INT_ONE_ITEM_VIEW_TYPE = 0;
     private final static int INT_TWO_ITEM_VIEW_TYPE = 1;
-    private final static int INT_LOAD_MORE_VIEW_TYPE = 2;
+    public final static int INT_LOAD_MORE_VIEW_TYPE = 2;
 
     private List<SongListItemModel> mDataList = new ArrayList<>();
-
+    private BaseRecycleViewViewType mOneItemViewType, mTwoItemViewType, mLoadMoreViewType;
     public SongListAdapter(Context context) {
         super(context);
         setData(mDataList);
@@ -31,9 +35,17 @@ public class SongListAdapter extends BaseRecycleViewAdapter<SongListItemModel> {
 
     @Override
     protected void initViewType(List<BaseRecycleViewViewType> viewTypesList) {
-        viewTypesList.add(new OneItemViewType(this));
-        viewTypesList.add(new TwoItemViewType(this));
-        viewTypesList.add(new LoadMoreViewType(this));
+        mOneItemViewType = new OneItemViewType(this);
+        mTwoItemViewType = new TwoItemViewType(this);
+        mLoadMoreViewType = new LoadMoreViewType(this);
+        viewTypesList.add(mOneItemViewType);
+        viewTypesList.add(mLoadMoreViewType);
+        viewTypesList.add(mTwoItemViewType);
+    }
+
+    public void removeLoadMore(){
+        List<BaseRecycleViewViewType> list = getViewTypeList();
+        list.remove(mLoadMoreViewType);
     }
 
     private class OneItemViewType extends BaseRecycleViewViewType{
@@ -59,9 +71,6 @@ public class SongListAdapter extends BaseRecycleViewAdapter<SongListItemModel> {
 
         @Override
         protected void onBindViewHolder(BaseRecycleViewViewHolder holder, int position) {
-            TextView textView = holder.getView(R.id.content);
-            SongListItemModel model = (SongListItemModel) getAdapter().getItem(position);
-            textView.setText(model.songContent);
         }
     }
 
@@ -74,7 +83,7 @@ public class SongListAdapter extends BaseRecycleViewAdapter<SongListItemModel> {
         @Override
         protected boolean isMatchViewType(int position) {
             BaseRecycleViewAdapter adapter = getAdapter();
-            return position != 0 &&  adapter != null && position != adapter.getItemCount() - 1 ;
+            return position != 0 &&  adapter != null;
         }
 
         @Override
@@ -90,7 +99,9 @@ public class SongListAdapter extends BaseRecycleViewAdapter<SongListItemModel> {
         @Override
         protected void onBindViewHolder(BaseRecycleViewViewHolder holder, int position) {
             TextView textView = holder.getView(R.id.content);
+            ImageView imageView = holder.getView(R.id.img);
             SongListItemModel model = (SongListItemModel) getAdapter().getItem(position);
+            ViewCompat.setBackground(imageView, ContextCompat.getDrawable(getContext(), model.songImageId));
             textView.setText(model.songContent);
         }
     }

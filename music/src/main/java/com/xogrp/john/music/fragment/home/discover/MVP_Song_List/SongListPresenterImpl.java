@@ -1,6 +1,9 @@
 package com.xogrp.john.music.fragment.home.discover.MVP_Song_List;
 
+import android.os.Looper;
+
 import java.util.List;
+import java.util.logging.Handler;
 
 /**
  * Created by Administrator on 2017/4/18.
@@ -25,16 +28,22 @@ public class SongListPresenterImpl implements SongListContract.SongListPresenter
     }
 
     @Override
-    public void loadMore() {
-        page++;
-        if(isLoadMoreEnable){
-            List<SongListItemModel> list = provider.getSongList(page);
-            if(list != null && list.size() > 0){
-                viewRenderer.showSongList(list);
-            }else{
-                isLoadMoreEnable = false;
-                viewRenderer.unableLoadMore();
+    public synchronized void loadMore() {
+        android.os.Handler handler = new android.os.Handler(Looper.getMainLooper());
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                page++;
+                if(isLoadMoreEnable){
+                    List<SongListItemModel> list = provider.getSongList(page);
+                    if(list != null && list.size() > 0){
+                        viewRenderer.showSongList(list);
+                    }else{
+                        isLoadMoreEnable = false;
+                        viewRenderer.unableLoadMore();
+                    }
+                }
             }
-        }
+        }, 5000);
     }
 }

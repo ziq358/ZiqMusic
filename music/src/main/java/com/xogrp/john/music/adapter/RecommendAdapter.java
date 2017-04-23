@@ -1,6 +1,8 @@
 package com.xogrp.john.music.adapter;
 
 import android.content.Context;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
@@ -67,6 +69,9 @@ public class RecommendAdapter extends BaseRecycleViewAdapter<String> {
 
     private class AutoRollViewType extends BaseRecycleViewViewType{
 
+        private BaseRecycleViewAdapter testAdapter;
+
+
         public AutoRollViewType(BaseRecycleViewAdapter adapter) {
             super(adapter);
         }
@@ -90,13 +95,18 @@ public class RecommendAdapter extends BaseRecycleViewAdapter<String> {
         public BaseRecycleViewViewHolder onCreateViewHolder(ViewGroup parent) {
             Log.e("ziq", "AutoRollViewType onCreateViewHolder: ");
             BaseRecycleViewViewHolder holder = super.onCreateViewHolder(parent);
-            RecyclerView recyclerView =
+            RecyclerView recyclerView = holder.getView(R.id.rv_auto_roll);
+            recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext(), OrientationHelper.HORIZONTAL, false));
+            testAdapter = new testAdapter(recyclerView.getContext());
+            recyclerView.setAdapter(testAdapter);
             return holder;
         }
 
         @Override
         protected void onBindViewHolder(BaseRecycleViewViewHolder holder, int position) {
             Log.e("ziq", "AutoRollViewType onBindViewHolder: ");
+            RecyclerView recyclerView = holder.getView(R.id.rv_auto_roll);
+            recyclerView.getAdapter().notifyDataSetChanged();
         }
     }
 

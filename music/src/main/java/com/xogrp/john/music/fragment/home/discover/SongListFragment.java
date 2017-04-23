@@ -1,8 +1,10 @@
 package com.xogrp.john.music.fragment.home.discover;
 
 import android.content.Context;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -58,7 +60,16 @@ public class SongListFragment extends BaseMusicFragment implements SongListContr
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
         songListAdapter = new SongListAdapter(getContext());
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
+        gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int position) {
+                int type = songListAdapter.getItemViewType(position);
+                boolean isOneLine = type == SongListAdapter.INT_ONE_ITEM_VIEW_TYPE || type == SongListAdapter.INT_LOAD_MORE_VIEW_TYPE;
+                return isOneLine ? 2 : 1;
+            }
+        });
+        mRecyclerView.setLayoutManager(gridLayoutManager);
         mRecyclerView.setAdapter(songListAdapter);
         mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -70,6 +81,8 @@ public class SongListFragment extends BaseMusicFragment implements SongListContr
                 }
             }
         });
+
+        mRecyclerView.addItemDecoration(new SongListItemDecoration());
     }
 
     @Override
@@ -86,7 +99,32 @@ public class SongListFragment extends BaseMusicFragment implements SongListContr
 
     @Override
     public void unableLoadMore() {
-//        songListAdapter.removeDataList(songListAdapter.getItemCount() - 1);
-//        songListAdapter.notifyDataSetChanged();
+        songListAdapter.removeDataList(songListAdapter.getItemCount() - 1);
+        songListAdapter.removeLoadMore();
+        songListAdapter.notifyDataSetChanged();
     }
+
+    private class SongListItemDecoration extends RecyclerView.ItemDecoration{
+
+        public SongListItemDecoration() {
+        }
+
+        @Override
+        public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+            super.getItemOffsets(outRect, view, parent, state);
+            int totalCount = parent.getAdapter().getItemCount();
+            int itemPosition = ((RecyclerView.LayoutParams) view.getLayoutParams()).getViewAdapterPosition();
+            outRect.top = 20;
+            if(itemPosition != totalCount -1){
+                if(itemPosition%2 == 0){
+                    outRect.left = 20;
+                    outRect.right = 20;
+                }else{
+                    outRect.left = 20;
+                }
+            }
+
+        }
+    }
+
 }
