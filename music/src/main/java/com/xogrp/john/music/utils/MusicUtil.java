@@ -64,7 +64,6 @@ public class MusicUtil {
             music.size = cursor.getInt(cursor
                     .getColumnIndex(MediaStore.Audio.Media.SIZE));
             music.isLocal = true;
-//            music.sort = Pinyin.toPinyin(music.musicName.charAt(0)).substring(0, 1).toUpperCase();
             musicList.add(music);
         }
         cursor.close();

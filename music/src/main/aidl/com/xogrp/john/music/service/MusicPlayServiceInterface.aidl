@@ -8,5 +8,6 @@ interface MusicPlayServiceInterface {
     void pause();
     void stop();
     boolean isPlaying();
+    MusicInfo getCurrentMusicInfo();
     void setMusicList(in List<MusicInfo> musicList);
 }

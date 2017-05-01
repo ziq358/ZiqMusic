@@ -12,14 +12,17 @@ import android.os.RemoteException;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.ViewCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.xogrp.john.music.R;
+import com.xogrp.john.music.service.MusicInfo;
 import com.xogrp.john.music.service.MusicPlayService;
 import com.xogrp.john.music.service.MusicPlayServiceInterface;
 import com.xogrp.john.music.utils.MusicUtil;
@@ -33,6 +36,7 @@ public class MusicPlayerController implements View.OnClickListener{
     private Activity mContext;
     private LayoutInflater mLayoutInflater;
     private View mRootView;
+    private TextView mTvMusicName, mTvMusicSinger;
 
     private MusicPlayServiceInterface mServiceBinder;
     private boolean mBound;
@@ -55,7 +59,8 @@ public class MusicPlayerController implements View.OnClickListener{
     private void initView() {
         mPlayOrStopBtn = (ImageView) mRootView.findViewById(R.id.img_music_play_controller);
         mPlayOrStopBtn.setOnClickListener(this);
-
+        mTvMusicName = (TextView) mRootView.findViewById(R.id.tv_music_name);
+        mTvMusicSinger = (TextView) mRootView.findViewById(R.id.tv_music_singer);
         mRootView.findViewById(R.id.img_music_list).setOnClickListener(this);
         mRootView.findViewById(R.id.img_music_next).setOnClickListener(this);
     }
@@ -91,6 +96,14 @@ public class MusicPlayerController implements View.OnClickListener{
         public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
             Log.e("ziq", "bindService onServiceConnected: ");
             mServiceBinder = MusicPlayServiceInterface.Stub.asInterface(iBinder);
+            if(mServiceBinder != null){
+                try {
+                    mServiceBinder.setMusicList(MusicUtil.getLocalMusicList(mContext));
+                    initCurrentSong();
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+            }
             mBound = true;
         }
 
@@ -100,6 +113,15 @@ public class MusicPlayerController implements View.OnClickListener{
             mBound = false;
         }
     };
+
+    private void initCurrentSong() throws RemoteException {
+        MusicInfo musicInfo = mServiceBinder.getCurrentMusicInfo();
+        if(musicInfo != null){
+            mTvMusicName.setText(musicInfo.musicName);
+            mTvMusicSinger.setText(musicInfo.artist);
+
+        }
+    }
 
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         Log.e("ziq", "MusicPlayController onRequestPermissionsResult: ");
@@ -133,17 +155,17 @@ public class MusicPlayerController implements View.OnClickListener{
         try {
             switch (view.getId()){
                 case R.id.img_music_list:
-                    if(mServiceBinder != null){
-                        mServiceBinder.setMusicList(MusicUtil.getLocalMusicList(mContext));
-                    }
                     break;
                 case R.id.img_music_play_controller:
                     if(mServiceBinder != null){
                         try {
                             if(mServiceBinder.isPlaying()){
                                 mServiceBinder.pause();
+                                mPlayOrStopBtn.setImageDrawable( ContextCompat.getDrawable(mPlayOrStopBtn.getContext(), R.mipmap.music_bottom_player_play));
+
                             }else{
                                 mServiceBinder.play();
+                                mPlayOrStopBtn.setImageDrawable( ContextCompat.getDrawable(mPlayOrStopBtn.getContext(), R.mipmap.music_bottom_player_pause));
                             }
                         } catch (RemoteException e) {
                             e.printStackTrace();
@@ -153,6 +175,8 @@ public class MusicPlayerController implements View.OnClickListener{
                 case R.id.img_music_next:
                     if(mServiceBinder != null){
                         mServiceBinder.next();
+                        mPlayOrStopBtn.setImageDrawable( ContextCompat.getDrawable(mPlayOrStopBtn.getContext(), R.mipmap.music_bottom_player_pause));
+                        initCurrentSong();
                     }
                     break;
             }

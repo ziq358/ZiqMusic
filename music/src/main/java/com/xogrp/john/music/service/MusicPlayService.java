@@ -1,7 +1,10 @@
 package com.xogrp.john.music.service;
 
 import android.app.Service;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -9,6 +12,8 @@ import android.os.IBinder;
 import android.os.RemoteException;
 import android.support.annotation.Nullable;
 import android.util.Log;
+
+import com.xogrp.john.toollibrary.utils.TextUtil;
 
 import java.io.IOException;
 import java.lang.ref.WeakReference;
@@ -19,6 +24,10 @@ import java.util.List;
  */
 
 public class MusicPlayService extends Service {
+    public static final String STOP_CMD = "com.xogrp.john.music.service.stop";
+    public static final String NEXT_CMD = "com.xogrp.john.music.service.next";
+    public static final String PLAY_CMD = "com.xogrp.john.music.service.play";
+    public static final String PAUSE_CMD = "com.xogrp.john.music.service.pause";
 
 
     private static final String TAG = "ziq";
@@ -28,16 +37,28 @@ public class MusicPlayService extends Service {
     private MediaPlayer mMediaPlayer = new MediaPlayer();
     private boolean isPause = false;
 
+    private MusicNotification mMusicNotification;
     @Override
     public void onCreate() {
         super.onCreate();
         Log.e(TAG, "onCreate: ");
+        mMusicNotification = new MusicNotification(this);
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(STOP_CMD);
+        filter.addAction(NEXT_CMD);
+        filter.addAction(PLAY_CMD);
+        filter.addAction(PAUSE_CMD);
+        registerReceiver(mIntentReceiver, filter);
+
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.e(TAG, "onStartCommand: ");
-        return super.onStartCommand(intent, flags, startId);
+        if (intent != null) {
+            handleCommandIntent(intent);
+        }
+        return START_STICKY;
     }
 
 
@@ -52,6 +73,33 @@ public class MusicPlayService extends Service {
     public void onDestroy() {
         Log.e(TAG, "onDestroy: ");
         super.onDestroy();
+    }
+
+    private final BroadcastReceiver mIntentReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(final Context context, final Intent intent) {
+            handleCommandIntent(intent);
+        }
+    };
+
+    public void handleCommandIntent(Intent intent){
+        if(intent != null && !TextUtil.isTextEmptyOrNull(intent.getAction())){
+            switch (intent.getAction()){
+                case STOP_CMD:
+                    mMusicNotification.cancelNotification();
+                    stop();
+                    break;
+                case NEXT_CMD:
+                    next();
+                    break;
+                case PLAY_CMD:
+                    play();
+                    break;
+                case PAUSE_CMD:
+                    pause();
+                    break;
+            }
+        }
     }
 
     private static final class MusicPlayBinder extends MusicPlayServiceInterface.Stub{
@@ -106,6 +154,15 @@ public class MusicPlayService extends Service {
         }
 
         @Override
+        public MusicInfo getCurrentMusicInfo() throws RemoteException {
+            MusicPlayService service = musicPlayServiceWeakReference.get();
+            if(service != null){
+                return service.getCurrentMusicInfo();
+            }
+            return null;
+        }
+
+        @Override
         public void setMusicList(List<MusicInfo> musicList) throws RemoteException {
             MusicPlayService service = musicPlayServiceWeakReference.get();
             if(service != null){
@@ -114,9 +171,19 @@ public class MusicPlayService extends Service {
         }
     }
 
+    public MusicInfo getCurrentMusicInfo(){
+        if(mMusicInfoList != null && mMusicInfoList.size() > 0 ){
+            if(mCurrentSongPosition == -1){
+                mCurrentSongPosition = 0;
+            }
+            return mMusicInfoList.get(mCurrentSongPosition);
+        }
+        return null;
+    }
+
     public void play(){
         Log.e(TAG, "play: ");
-        if(mMusicInfoList != null && mMusicInfoList.size() > 0 ){
+        if(mMusicInfoList != null && mMusicInfoList.size() > 0 && !mMediaPlayer.isPlaying()){
             if(mCurrentSongPosition == -1){
                 mCurrentSongPosition = 0;
             }
@@ -126,6 +193,7 @@ public class MusicPlayService extends Service {
             }else{
                playSong(mCurrentSongPosition);
             }
+            mMusicNotification.updateNotification();
         }
     }
 
@@ -139,7 +207,7 @@ public class MusicPlayService extends Service {
             }
             playSong(mCurrentSongPosition);
         }
-
+        mMusicNotification.updateNotification();
     }
 
     private void playSong(int position){
@@ -156,6 +224,7 @@ public class MusicPlayService extends Service {
                     @Override
                     public void onPrepared(MediaPlayer mediaPlayer) {
                         mMediaPlayer.start();
+                        mMusicNotification.updateNotification();
                     }
                 });
             } catch (IOException e) {
@@ -170,6 +239,7 @@ public class MusicPlayService extends Service {
             isPause = true;
             mMediaPlayer.pause();
         }
+        mMusicNotification.updateNotification();
     }
 
     public void stop(){
@@ -186,5 +256,10 @@ public class MusicPlayService extends Service {
     public void setMusicInfoList(List<MusicInfo> musicInfoList) {
         this.mCurrentSongPosition = -1;
         this.mMusicInfoList = musicInfoList;
+        if(mCurrentSongPosition == -1){
+            mCurrentSongPosition = 0;
+        }
     }
+
+
 }
