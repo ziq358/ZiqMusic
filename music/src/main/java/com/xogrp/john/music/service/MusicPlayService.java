@@ -13,6 +13,7 @@ import android.os.RemoteException;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
+import com.xogrp.john.music.activity.LockActivity;
 import com.xogrp.john.toollibrary.utils.TextUtil;
 
 import java.io.IOException;
@@ -48,6 +49,7 @@ public class MusicPlayService extends Service {
         filter.addAction(NEXT_CMD);
         filter.addAction(PLAY_CMD);
         filter.addAction(PAUSE_CMD);
+        filter.addAction(Intent.ACTION_SCREEN_OFF);
         registerReceiver(mIntentReceiver, filter);
 
     }
@@ -85,6 +87,11 @@ public class MusicPlayService extends Service {
     public void handleCommandIntent(Intent intent){
         if(intent != null && !TextUtil.isTextEmptyOrNull(intent.getAction())){
             switch (intent.getAction()){
+                case Intent.ACTION_SCREEN_OFF:
+                    Intent lockActivity = new Intent(this, LockActivity.class);
+                    lockActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(lockActivity);
+                    break;
                 case STOP_CMD:
                     mMusicNotification.cancelNotification();
                     stop();
