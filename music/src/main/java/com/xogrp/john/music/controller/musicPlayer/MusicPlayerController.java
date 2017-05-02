@@ -7,9 +7,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.IBinder;
 import android.os.RemoteException;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewCompat;
@@ -98,8 +100,10 @@ public class MusicPlayerController implements View.OnClickListener{
             mServiceBinder = MusicPlayServiceInterface.Stub.asInterface(iBinder);
             if(mServiceBinder != null){
                 try {
-                    mServiceBinder.setMusicList(MusicUtil.getLocalMusicList(mContext));
-                    initCurrentSong();
+                    if(getPermission()){
+                        mServiceBinder.setMusicList(MusicUtil.getLocalMusicList(mContext));
+                        initCurrentSong();
+                    }
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
@@ -133,15 +137,21 @@ public class MusicPlayerController implements View.OnClickListener{
                     Toast.makeText(mContext, "获取了权限", Toast.LENGTH_SHORT).show();
                 }else{
                     //拒绝
-                    Toast.makeText(mContext, "拒绝权限", Toast.LENGTH_SHORT).show();
+                    Snackbar.make(mRootView, "需要相应，前往获得", Snackbar.LENGTH_LONG)
+                            .setAction("Setting", new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    Intent intent= new Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+                                            Uri.parse("package:com.xogrp.john.music"));
+                                    mContext.startActivity(intent);
+                                }
+                            }).show();
                 }
                 break;
         }
     }
 
-
-    @Override
-    public void onClick(View view) {
+    private boolean getPermission(){
         if(ContextCompat.checkSelfPermission(mContext, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
             //拒绝之后会返回true
             if(ActivityCompat.shouldShowRequestPermissionRationale(mContext, Manifest.permission.READ_EXTERNAL_STORAGE)){
@@ -150,8 +160,15 @@ public class MusicPlayerController implements View.OnClickListener{
             //需要授权， 会回调activity中的onRequestPermissionsResult
             ActivityCompat.requestPermissions(mContext,new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, READ_EXTERNAL_STORAGE_REQUEST_ID);
 
-            return;
+            return false;
         }
+        return true;
+    }
+
+    @Override
+    public void onClick(View view) {
+
+        if(!getPermission())return;
         try {
             switch (view.getId()){
                 case R.id.img_music_list:
