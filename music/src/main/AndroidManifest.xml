@@ -18,7 +18,11 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activity.LockActivity"></activity>
+        <activity android:name=".activity.LockActivity"
+                  android:excludeFromRecents="true"
+                  android:noHistory="true"
+                  android:taskAffinity="com.package.name.lockscreen"
+            ></activity>
 
         <service android:name=".service.MusicPlayService" android:process=":music"/>
     </application>

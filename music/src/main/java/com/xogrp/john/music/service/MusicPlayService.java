@@ -30,6 +30,9 @@ public class MusicPlayService extends Service {
     public static final String PLAY_CMD = "com.xogrp.john.music.service.play";
     public static final String PAUSE_CMD = "com.xogrp.john.music.service.pause";
 
+    public static final String LOCK_SCREEN_CMD = "com.xogrp.john.music.service.lock";
+    public static final String LOCK_SCREEN_CMD_FLAG = "com.xogrp.john.music.service.lock.flag";
+
 
     private static final String TAG = "ziq";
     private IBinder mBinder = new MusicPlayBinder(this);
@@ -37,6 +40,7 @@ public class MusicPlayService extends Service {
     private List<MusicInfo> mMusicInfoList;
     private MediaPlayer mMediaPlayer = new MediaPlayer();
     private boolean isPause = false;
+    private boolean isLockScreen = false;
 
     private MusicNotification mMusicNotification;
     @Override
@@ -49,6 +53,7 @@ public class MusicPlayService extends Service {
         filter.addAction(NEXT_CMD);
         filter.addAction(PLAY_CMD);
         filter.addAction(PAUSE_CMD);
+        filter.addAction(LOCK_SCREEN_CMD);
         filter.addAction(Intent.ACTION_SCREEN_OFF);
         registerReceiver(mIntentReceiver, filter);
 
@@ -88,9 +93,11 @@ public class MusicPlayService extends Service {
         if(intent != null && !TextUtil.isTextEmptyOrNull(intent.getAction())){
             switch (intent.getAction()){
                 case Intent.ACTION_SCREEN_OFF:
-                    Intent lockActivity = new Intent(this, LockActivity.class);
-                    lockActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(lockActivity);
+                    if(isPlaying() && !isLockScreen){
+                        Intent lockActivity = new Intent(this, LockActivity.class);
+                        lockActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(lockActivity);
+                    }
                     break;
                 case STOP_CMD:
                     mMusicNotification.cancelNotification();
@@ -104,6 +111,9 @@ public class MusicPlayService extends Service {
                     break;
                 case PAUSE_CMD:
                     pause();
+                    break;
+                case LOCK_SCREEN_CMD:
+                    isLockScreen = intent.getBooleanExtra(LOCK_SCREEN_CMD_FLAG, true);
                     break;
             }
         }
