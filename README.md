@@ -14,6 +14,7 @@ remusic 项目：https://github.com/aa112901/remusic<br>
 * service + notification + startForeground（。。。）提高级别
 * 锁屏界面显示
 * 6.0权限管理
+<br>
 具体的切换到v1.0分支的readme 文件查看
 
 
