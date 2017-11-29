@@ -24,11 +24,5 @@ public class fragment3 extends android.support.v4.app.Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        view.findViewById(R.id.click).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ScreenshotManager.getInstance().takeScreenshot(getActivity());
-            }
-        });
     }
 }
