@@ -3,17 +3,10 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="auto roll"
-        />
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_auto_roll"
+    <com.xogrp.john.music.widget.AutoRollViewPager
+        android:id="@+id/roll_view_pager"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         >
-
-    </android.support.v7.widget.RecyclerView>
+    </com.xogrp.john.music.widget.AutoRollViewPager>
 </LinearLayout>

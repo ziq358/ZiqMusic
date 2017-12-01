@@ -7,11 +7,15 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.recycleviewrelatedlibrary.BaseRecycleViewAdapter;
 import com.example.recycleviewrelatedlibrary.BaseRecycleViewViewHolder;
 import com.example.recycleviewrelatedlibrary.BaseRecycleViewViewType;
+import com.squareup.picasso.Picasso;
 import com.xogrp.john.music.R;
+import com.xogrp.john.music.widget.AutoRollViewPager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,10 +35,10 @@ public class RecommendAdapter extends BaseRecycleViewAdapter<String> {
     private final static String RADIO_VIEW_TYPE = "radio_view_type";
     private final static String ADJUST_ORDER_VIEW_TYPE = "adjust_order_view_type";
 
-    private final static int INT_AUTO_ROLL_VIEW_TYPE = 3;
+    private final static int INT_AUTO_ROLL_VIEW_TYPE = 0;
     private final static int INT_THREE_CIRCLE_VIEW_TYPE = 1;
     private final static int INT_RECOMMEND_SONG_LIST_VIEW_TYPE = 2;
-    private final static int INT_EXCLUSIVE_SEND_OUT_VIEW_TYPE = 0;
+    private final static int INT_EXCLUSIVE_SEND_OUT_VIEW_TYPE = 3;
     private final static int INT_NEWEST_MUSIC_VIEW_TYPE = 4;
     private final static int INT_RECOMMEND_MV_VIEW_TYPE = 5;
     private final static int INT_RADIO_VIEW_TYPE = 6;
@@ -69,9 +73,6 @@ public class RecommendAdapter extends BaseRecycleViewAdapter<String> {
 
     private class AutoRollViewType extends BaseRecycleViewViewType{
 
-        private BaseRecycleViewAdapter testAdapter;
-
-
         public AutoRollViewType(BaseRecycleViewAdapter adapter) {
             super(adapter);
         }
@@ -93,21 +94,41 @@ public class RecommendAdapter extends BaseRecycleViewAdapter<String> {
 
         @Override
         public BaseRecycleViewViewHolder onCreateViewHolder(ViewGroup parent) {
-            Log.e("ziq", "AutoRollViewType onCreateViewHolder: ");
             BaseRecycleViewViewHolder holder = super.onCreateViewHolder(parent);
-            RecyclerView recyclerView = holder.getView(R.id.rv_auto_roll);
-            recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext(), OrientationHelper.HORIZONTAL, false));
-            testAdapter = new testAdapter(recyclerView.getContext());
-            recyclerView.setAdapter(testAdapter);
+            AutoRollViewPager autoRollViewPager = holder.getView(R.id.roll_view_pager);
+            PhotoRollViewPagerAdapter adapter = new PhotoRollViewPagerAdapter();
+            List<Integer> data = new ArrayList<>();
+            data.add(R.drawable.recommend_auto_roll_1);
+            data.add(R.drawable.recommend_auto_roll_2);
+            data.add(R.drawable.recommend_auto_roll_3);
+            data.add(R.drawable.recommend_auto_roll_4);
+            data.add(R.drawable.recommend_auto_roll_5);
+            adapter.setData(data);
+            autoRollViewPager.setAdapter(adapter);
             return holder;
         }
 
         @Override
         protected void onBindViewHolder(BaseRecycleViewViewHolder holder, int position) {
-            Log.e("ziq", "AutoRollViewType onBindViewHolder: ");
-            RecyclerView recyclerView = holder.getView(R.id.rv_auto_roll);
-            recyclerView.getAdapter().notifyDataSetChanged();
         }
+
+
+        class PhotoRollViewPagerAdapter extends AutoRollViewPager.RollViewPagerAdapter<Integer> {
+
+            @Override
+            public int getItemLayoutRes() {
+                return R.layout.auto_roll_view_pager_item_layout;
+            }
+
+            @Override
+            public void onBindItemView(ViewGroup rootView, int position, int realPosition) {
+                List<Integer> data = getData();
+                Integer photoUrl = data.get(realPosition);
+                ImageView imageView = (ImageView) rootView.findViewById(R.id.img);
+                Picasso.with(rootView.getContext()).load(photoUrl).into(imageView);
+            }
+        }
+
     }
 
     private class ThreeCircleViewType extends BaseRecycleViewViewType{
