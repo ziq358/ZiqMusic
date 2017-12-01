@@ -1,6 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="colorPrimaryDark">@android:color/holo_green_light</color>
     <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="theme_color_primary">#d20000</color>
+
+    <color name="white">#FFFFFFFF</color>
+    <color name="white_transparency">#85FFFFFF</color>
+    <color name="left_nav_bg_gray">#F2F4F5</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="c_nav_selected">#6CC6F0</color>
+    <color name="c_nav_icon_unselected">#C73536</color>
+
+    <color name="c_nav_text_unselected">#1f1f1f</color>
+
+    <color name="c_home_tab_icon_not_select" >#DB7273</color>
+    <color name="c_home_tab_icon_select" >#FFFFFFFF</color>
+    <color name="c_recommend_bg">#F2F4F5</color>
+
+    <color name="c_line_item_bg">#D5D6D7</color>
+
+    <color name="bottom_text">#c1c0c0</color>
+    <color name="notification_bak">#47fafafa</color>
+    <color name="theme_color_primary_dark">#b85671</color>
+    <color name="primary_material_light_1">#3f51b5</color>
+    <color name="background_material_light_1">#fafafa</color>
+    <color name="background_material_light_2">#ed02fafa</color>
+    <color name="small_font">#FF757575</color>
+    <color name="text_color">#FF000000</color>
+    <color name="widget_background_color">#a0000000</color>
+    <color name="white_text">#fafafa</color>
 </resources>
