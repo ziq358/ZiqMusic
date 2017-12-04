@@ -1,1 +1,1 @@
-include ':app', ':toollibrary', ':testjavacode', ':music', ':recycleviewrelatedlibrary'
+include ':app', ':toollibrary', ':testjavacode', ':music', ':recycleviewrelatedlibrary', ':musicinkotlin', ':musicresource'

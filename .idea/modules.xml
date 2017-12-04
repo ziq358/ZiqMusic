@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/ZiqMusicPlayer.iml" filepath="$PROJECT_DIR$/ZiqMusicPlayer.iml" />
       <module fileurl="file://$PROJECT_DIR$/ZiqToolLibrary.iml" filepath="$PROJECT_DIR$/ZiqToolLibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/music/music.iml" filepath="$PROJECT_DIR$/music/music.iml" />
+      <module fileurl="file://$PROJECT_DIR$/musicinkotlin/musicinkotlin.iml" filepath="$PROJECT_DIR$/musicinkotlin/musicinkotlin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/musicresource/musicresource.iml" filepath="$PROJECT_DIR$/musicresource/musicresource.iml" />
       <module fileurl="file://$PROJECT_DIR$/recycleviewrelatedlibrary/recycleviewrelatedlibrary.iml" filepath="$PROJECT_DIR$/recycleviewrelatedlibrary/recycleviewrelatedlibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/testjavacode/testjavacode.iml" filepath="$PROJECT_DIR$/testjavacode/testjavacode.iml" />
       <module fileurl="file://$PROJECT_DIR$/toollibrary/toollibrary.iml" filepath="$PROJECT_DIR$/toollibrary/toollibrary.iml" />
