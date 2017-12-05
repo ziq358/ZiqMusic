@@ -21,12 +21,24 @@ abstract class BaseActivity : AppCompatActivity(){
     }
 
     // unit 相当于 void 返回
-    fun addFragment(fragment: Fragment, tag: String): Unit {
-        var containerId = getContainerId()
+    // open 子类才能 重写
+    open fun addFragment(fragment: Fragment, tag: String): Unit {
+        val containerId = getContainerId()
         if(containerId > 0){
-            var transaction = mFragmentManager?.beginTransaction()
+            val transaction = mFragmentManager?.beginTransaction()
             transaction?.add(containerId, fragment, tag)
             transaction?.addToBackStack(tag)
+            transaction?.commitAllowingStateLoss()
+        }else{
+            Toast.makeText(this, "container id error", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    open fun replaceFragment(fragment: Fragment, tag: String): Unit {
+        val containerId = getContainerId()
+        if(containerId > 0){
+            val transaction = mFragmentManager?.beginTransaction()
+            transaction?.replace(containerId, fragment, tag)
             transaction?.commitAllowingStateLoss()
         }else{
             Toast.makeText(this, "container id error", Toast.LENGTH_SHORT).show()

@@ -10,13 +10,13 @@ import android.view.ViewGroup;
 import com.example.musicinkotlin.R;
 
 /**
- * Created by john on 04/12/2017.
+ * Created by john on 05/12/2017.
  */
 
-public class HomeFragment extends Fragment {
+public class MusicFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        return inflater.inflate(R.layout.fragment_music, container, false);
     }
 }
