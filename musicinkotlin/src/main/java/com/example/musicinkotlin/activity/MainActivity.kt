@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment
 import android.widget.Toast
 import com.example.musicinkotlin.R
 import com.example.musicinkotlin.fragment.HomeFragment
+import com.example.musicinkotlin.service.musicService.MusicPlayService
 import com.example.musicinkotlin.widget.DrawerLayoutController
 
 class MainActivity : BaseActivity(), DrawerLayoutController.LeftNavigator {
@@ -27,7 +28,8 @@ class MainActivity : BaseActivity(), DrawerLayoutController.LeftNavigator {
     }
 
     override fun gotoMyMessage() {
-        Toast.makeText(this,"gotoMyMessage", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this,"play music", Toast.LENGTH_SHORT).show()
+        MusicPlayService.startMusicPlayService(this)
     }
 
     override fun openDrawer() {

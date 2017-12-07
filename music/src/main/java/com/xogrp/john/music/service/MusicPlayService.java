@@ -10,7 +10,6 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.IBinder;
 import android.os.RemoteException;
-import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.xogrp.john.music.activity.LockActivity;
@@ -69,7 +68,6 @@ public class MusicPlayService extends Service {
     }
 
 
-    @Nullable
     @Override
     public IBinder onBind(Intent intent) {
         Log.e(TAG, "onBind: ");
