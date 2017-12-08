@@ -68,12 +68,8 @@ class MusicNotification(musicPlayService: MusicPlayService) {
     fun updateNotification() {
         val musicPlayService = mMusicPlayService?.get()
         if (musicPlayService != null) {
-            if(musicPlayService.isPlaying()){
-                //提高程序进程 优先级， 不易被杀死
-                musicPlayService.startForeground(mNotificationId, getNotification())
-            }else{
-                musicPlayService.stopForeground(true)
-            }
+            //提高程序进程 优先级， 不易被杀死
+            musicPlayService.startForeground(mNotificationId, getNotification())
             mNotificationManager?.notify(mNotificationId, getNotification())
         }
     }
