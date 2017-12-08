@@ -15,7 +15,7 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".service.musicService.MusicPlayService" android:process=":music"/>
+        <service android:name=".service.musicService.MusicPlayService"/>
     </application>
 
 </manifest>

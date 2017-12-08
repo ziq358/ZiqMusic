@@ -32,6 +32,7 @@ class DrawerLayoutController private constructor() : NavigationView.OnNavigation
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.left_nav_my_msg -> mLeftNavigator?.gotoMyMessage()
+            R.id.left_nav_vip_center -> mLeftNavigator?.gotoVipCenter()
         }
         return true
     }
@@ -46,6 +47,7 @@ class DrawerLayoutController private constructor() : NavigationView.OnNavigation
 
     interface LeftNavigator{
         fun gotoMyMessage()
+        fun gotoVipCenter()
         fun openDrawer()
         fun closeDrawer()
     }

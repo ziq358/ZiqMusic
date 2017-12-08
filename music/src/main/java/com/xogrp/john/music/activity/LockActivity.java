@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.xogrp.john.music.R;
 import com.xogrp.john.music.service.MusicPlayService;
@@ -133,7 +134,7 @@ public class LockActivity extends AbstractMusicActivity implements View.OnClickL
 
 
 
-    ServiceConnection serviceConnection = new ServiceConnection() {
+    private ServiceConnection serviceConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
             mServiceBinder = MusicPlayServiceInterface.Stub.asInterface(iBinder);
@@ -147,6 +148,7 @@ public class LockActivity extends AbstractMusicActivity implements View.OnClickL
                 e.printStackTrace();
             }
             mBound = true;
+            Toast.makeText(LockActivity.this, "", Toast.LENGTH_SHORT).show();
         }
 
         @Override

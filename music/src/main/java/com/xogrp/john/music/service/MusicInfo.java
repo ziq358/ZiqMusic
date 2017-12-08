@@ -55,7 +55,7 @@ public class MusicInfo implements Parcelable {
     }
 
     protected MusicInfo(Parcel in) {
-        Bundle bundle = in.readBundle();
+        Bundle bundle = in.readBundle(getClass().getClassLoader());
         this.songId = bundle.getLong(KEY_SONG_ID);
         this.albumId = bundle.getInt(KEY_ALBUM_ID);
         this.albumName = bundle.getString(KEY_ALBUM_NAME);
