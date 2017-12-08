@@ -7,6 +7,7 @@ import com.example.musicinkotlin.service.musicService.MusicInfo;
 interface MusicPlayServiceBinder {
     void play();
     void next();
+    int getCurrentPosition();
     void pause();
     void stop();
     boolean isPlaying();

@@ -5,10 +5,15 @@ import android.content.*
 import android.media.AudioManager
 import android.media.MediaPlayer
 import android.net.Uri
+import android.os.Handler
 import android.os.IBinder
 import com.example.musicinkotlin.MusicPlayServiceBinder
 import com.example.musicinkotlin.R
 import java.lang.ref.WeakReference
+import android.os.SystemClock
+
+
+
 
 
 /**
@@ -16,15 +21,13 @@ import java.lang.ref.WeakReference
  */
 class MusicPlayService: Service() {
 
-
-
-
     private val mMediaPlayer: MediaPlayer = MediaPlayer()
     private var mMusicNotification: MusicNotification? = null
 
     private var mMusicList: MutableList<MusicInfo>? = mutableListOf()
     private var mCurrentMusicPos: Int = 0
     private var mIsPause: Boolean = false
+    private val mHandler: Handler = Handler()
 
     companion object {
         fun startMusicPlayService(context: Context) {
@@ -43,7 +46,7 @@ class MusicPlayService: Service() {
         val PAUSE_CMD = "com.example.musicinkotlin.service.musicService.pause"
         val STOP_CMD = "com.example.musicinkotlin.service.musicService.stop"
         val REMOVE_NOTIFICATION_CMD = "com.example.musicinkotlin.service.musicService.removeNotification"
-
+        const val UPDATE_STATUS_CMD = "com.example.musicinkotlin.service.musicService.updateStatus"
     }
 
     override fun onCreate() {
@@ -93,12 +96,27 @@ class MusicPlayService: Service() {
         super.onDestroy()
     }
 
+    fun updateNotification(): Unit {
+        mMusicNotification?.updateNotification()
+        sendBroadcast(Intent(UPDATE_STATUS_CMD))
+    }
+
+    private val mTicker = object : Runnable {
+        override fun run() {
+            sendBroadcast(Intent(UPDATE_STATUS_CMD))
+            val now = SystemClock.uptimeMillis()
+            val next = now + (1000 - now % 1000)
+            mHandler.postAtTime(this, next)
+        }
+    }
+
+
     fun play(): Unit {
         if(!mMediaPlayer.isPlaying){
             if(mIsPause){
                 mIsPause = false
                 mMediaPlayer.start()
-                mMusicNotification?.updateNotification()
+                updateNotification()
             }else{
                 playSong()
             }
@@ -114,7 +132,8 @@ class MusicPlayService: Service() {
         mMediaPlayer.prepareAsync()
         mMediaPlayer.setOnPreparedListener {
             mMediaPlayer.start()
-            mMusicNotification?.updateNotification()
+            mHandler.post(mTicker)
+            updateNotification()
         }
         mMediaPlayer.setOnCompletionListener(MediaPlayer.OnCompletionListener {
             next()
@@ -130,17 +149,21 @@ class MusicPlayService: Service() {
         playSong()
     }
 
+    fun getCurrentPosition(): Int {
+        return 100 * mMediaPlayer.currentPosition / mMediaPlayer.duration
+    }
+
     fun pause(): Unit {
         if (mMediaPlayer.isPlaying){
             mIsPause = true
             mMediaPlayer.pause()
-            mMusicNotification?.updateNotification()
+            updateNotification()
         }
     }
 
     fun stop(): Unit {
         mMediaPlayer.stop()
-        mMusicNotification?.updateNotification()
+        updateNotification()
     }
 
     fun isPlaying(): Boolean {
@@ -157,7 +180,6 @@ class MusicPlayService: Service() {
 
 
     class MusicBinder(): MusicPlayServiceBinder.Stub(){
-
         private var mService: WeakReference<MusicPlayService>? = null
 
         constructor(service: MusicPlayService) :this(){
@@ -170,6 +192,10 @@ class MusicPlayService: Service() {
 
         override fun next() {
             mService?.get()?.next()
+        }
+
+        override fun getCurrentPosition(): Int {
+            return mService?.get()?.getCurrentPosition()!!
         }
 
         override fun pause() {
