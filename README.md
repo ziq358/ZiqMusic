@@ -1,5 +1,6 @@
 # ZiqMusicPlayer
-原本只是一个工具类库，熟悉一下bintray的配置。后来就在这里弄了一个模仿网易云的项目了。
+模仿网易云的项目， kotlin 与java 混合， 主要运用后台服务播放。<br>
+![image](https://github.com/ziq358/ZiqMusicPlayer/blob/master/readMe/jieshao.gif)
 
 ## V1.0:
 适合初步了解音乐播放器的基本东西.<br>
