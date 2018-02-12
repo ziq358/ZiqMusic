@@ -53,7 +53,7 @@ open class HomeFragment :Fragment(), HomeTabController.HomeTabListener {
     }
 
     private fun initToolbar(toolbar: Toolbar) {
-        toolbar.setNavigationIcon(R.mipmap.ic_hamberger)
+        toolbar.setNavigationIcon(R.drawable.ic_hamberger)
         toolbar.setNavigationOnClickListener {
             mLeftNavigator?.openDrawer()
         }
