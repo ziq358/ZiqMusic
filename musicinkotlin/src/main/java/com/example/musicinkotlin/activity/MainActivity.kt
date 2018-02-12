@@ -16,6 +16,7 @@ import com.example.musicinkotlin.service.musicService.MusicPlayService
 import com.example.musicinkotlin.widget.DrawerLayoutController
 import com.example.musicinkotlin.widget.MusicPlayerController
 import com.tencent.bugly.crashreport.CrashReport
+import kotlinx.android.synthetic.main.song_list_load_more_layout.*
 
 class MainActivity : BaseActivity(), DrawerLayoutController.LeftNavigator {
 
@@ -39,7 +40,8 @@ class MainActivity : BaseActivity(), DrawerLayoutController.LeftNavigator {
     }
 
     override fun gotoMyMessage() {
-        CrashReport.testJavaCrash()
+        Toast.makeText(baseContext, "热更新修复", Toast.LENGTH_SHORT).show()
+//        CrashReport.testJavaCrash()
     }
 
     override fun gotoVipCenter() {

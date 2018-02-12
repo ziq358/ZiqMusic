@@ -5,7 +5,7 @@
 
         <item android:id="@+id/left_nav_my_msg"
             android:icon="@mipmap/left_nav_my_message"
-            android:title="发送BuglyCrash, 2.0"/>
+            android:title="修复BuglyCrash, 2.0 热更新"/>
 
         <item android:id="@+id/left_nav_vip_center"
             android:icon="@mipmap/left_nav_vip_center"
