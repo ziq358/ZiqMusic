@@ -150,6 +150,9 @@ class MusicPlayService: Service() {
     }
 
     fun getCurrentPosition(): Int {
+        if(mMediaPlayer.duration == 0){
+            return 0
+        }
         return 100 * mMediaPlayer.currentPosition / mMediaPlayer.duration
     }
 

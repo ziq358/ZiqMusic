@@ -1,6 +1,7 @@
 package com.example.musicinkotlin
 
 import android.app.Application
+import com.tencent.bugly.Bugly
 import com.tencent.bugly.crashreport.CrashReport
 
 /**
@@ -11,7 +12,8 @@ public class MusicApplication : Application(){
 
     override fun onCreate() {
         super.onCreate()
-        CrashReport.initCrashReport(applicationContext, "7d88acbfa6", true)
+//        CrashReport.initCrashReport(applicationContext, "7d88acbfa6", true)
+        Bugly.init(applicationContext, "7d88acbfa6", true);
     }
 
 }
