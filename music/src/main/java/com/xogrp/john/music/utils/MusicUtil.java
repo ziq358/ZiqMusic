@@ -66,7 +66,10 @@ public class MusicUtil {
             music.isLocal = true;
             musicList.add(music);
         }
-        cursor.close();
+        if(cursor != null){
+          cursor.close();
+        }
+
 
         return musicList;
     }

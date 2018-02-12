@@ -17,7 +17,7 @@ public abstract class ToolbarLeftMenuIcon {
 
         @Override
         public int getMenuIcon() {
-            return R.mipmap.ic_hamberger;
+            return R.drawable.ic_hamberger;
         }
 
         @Override
