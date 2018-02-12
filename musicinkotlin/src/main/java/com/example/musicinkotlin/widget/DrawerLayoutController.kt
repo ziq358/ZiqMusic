@@ -8,6 +8,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.FrameLayout
 import com.example.musicinkotlin.R
+import com.tencent.bugly.crashreport.CrashReport
 
 /**
  * Created by john on 04/12/2017.

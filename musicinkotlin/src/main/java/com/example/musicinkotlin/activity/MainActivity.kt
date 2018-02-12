@@ -15,6 +15,7 @@ import com.example.musicinkotlin.service.musicService.MusicInfo
 import com.example.musicinkotlin.service.musicService.MusicPlayService
 import com.example.musicinkotlin.widget.DrawerLayoutController
 import com.example.musicinkotlin.widget.MusicPlayerController
+import com.tencent.bugly.crashreport.CrashReport
 
 class MainActivity : BaseActivity(), DrawerLayoutController.LeftNavigator {
 
@@ -38,6 +39,7 @@ class MainActivity : BaseActivity(), DrawerLayoutController.LeftNavigator {
     }
 
     override fun gotoMyMessage() {
+        CrashReport.testJavaCrash()
     }
 
     override fun gotoVipCenter() {
