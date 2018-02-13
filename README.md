@@ -1,5 +1,5 @@
 # ZiqMusicPlayer
-模仿网易云的项目， kotlin 与java 混合， 主要运用后台服务播放。<br>
+模仿网易云的项目， kotlin 与java 混合， 主要运用后台服务播放。集成了 腾讯bugly 热修复<br>
 ![image](https://github.com/ziq358/ZiqMusicPlayer/blob/master/readMe/jieshao.gif)
 
 ## V1.0:
