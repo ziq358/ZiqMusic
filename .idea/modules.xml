@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ZiqMusicPlayer.iml" filepath="$PROJECT_DIR$/ZiqMusicPlayer.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ZiqToolLibrary.iml" filepath="$PROJECT_DIR$/ZiqToolLibrary.iml" />
+      <module fileurl="file://F:\demo\ziq\ZiqMusicPlayer\ZiqToolLibrary.iml" filepath="F:\demo\ziq\ZiqMusicPlayer\ZiqToolLibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/music/music.iml" filepath="$PROJECT_DIR$/music/music.iml" />
       <module fileurl="file://$PROJECT_DIR$/musicinkotlin/musicinkotlin.iml" filepath="$PROJECT_DIR$/musicinkotlin/musicinkotlin.iml" />
